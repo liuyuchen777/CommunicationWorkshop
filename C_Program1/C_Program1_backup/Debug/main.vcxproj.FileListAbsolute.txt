@@ -1,2 +1,0 @@
-D:\Local_Lab\CWorkshop\C_Program1\C_Program1\Debug\main.exe
-D:\Local_Lab\CWorkshop\C_Program1\C_Program1\Debug\main.pdb
