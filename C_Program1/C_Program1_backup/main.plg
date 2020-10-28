@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: main - Win32 Release--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\boonju\LOCALS~1\Temp\RSPB7.tmp" を作成し、次の内容を記録します
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/main.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\boonju\デスクトップ\課題1(雑音付加)\ber.c"
+"C:\Documents and Settings\boonju\デスクトップ\課題1(雑音付加)\main.c"
+"C:\Documents and Settings\boonju\デスクトップ\課題1(雑音付加)\transmitter.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\boonju\LOCALS~1\Temp\RSPB7.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\boonju\LOCALS~1\Temp\RSPB8.tmp" を作成し、次の内容を記録します
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/main.pdb" /machine:I386 /out:"Release/main.exe" 
+".\Release\ber.obj"
+".\Release\main.obj"
+".\Release\transmitter.obj"
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe @C:\DOCUME~1\boonju\LOCALS~1\Temp\RSPB8.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+ber.c
+main.c
+C:\Documents and Settings\boonju\デスクトップ\課題1(雑音付加)\main.c(8) : warning C4101: 'received_bit' : ﾛｰｶﾙ変数は 1 度も使われません。
+C:\Documents and Settings\boonju\デスクトップ\課題1(雑音付加)\main.c(9) : warning C4101: 'received_signal' : ﾛｰｶﾙ変数は 1 度も使われません。
+transmitter.c
+ﾘﾝｸ中...
+
+
+
+<h3>結果</h3>
+main.exe - ｴﾗｰ 0、警告 2
+</pre>
+</body>
+</html>
