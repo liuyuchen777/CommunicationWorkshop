@@ -18,7 +18,6 @@ void ber(int loop, int (*tbit), int (*rbit), FILE *fp, double CNR)
 
 	if(loop == LOOPN-1)
 	{
-		TT_PRINT("total error in 100000 loop is %f", AverageBER);
 		AverageBER /= (LOOPN * BITN);
 		printf("Eb/N0 = %f, Average BER = %1.10f\n", (CNR - 3.0), AverageBER);
 		fprintf(fp, "%f\t%1.10f\n", (CNR - 3.0), AverageBER);

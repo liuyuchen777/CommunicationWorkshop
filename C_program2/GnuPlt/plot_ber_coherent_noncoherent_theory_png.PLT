@@ -12,6 +12,6 @@ set xrange [0:11]
 set yrange [0.0000001:1]
 set format y "10^{%T}"
 plot 0.5*erfc(2*sqrt(10**(x/10))*sin(pi/8)) t "Non-conherent Theory" w lp lt 1 pt 0,\
-0.5*erfc(sqrt(exp(x*log(10)/10))) t "Coherent Theory" w lp pt 1
+"noncoherent_without_shift.dat" u 1:2 t "Non-coherent Simulation" w lp pt 1
 set terminal windows
 set output

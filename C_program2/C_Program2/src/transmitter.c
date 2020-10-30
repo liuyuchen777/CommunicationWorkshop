@@ -63,11 +63,11 @@ void DQPSK_modulator(int *bit, Complex *signal)
 		{
 			if (bit[2 * i + 1] == 0)
 			{
-				now_symbol = 2;
+				now_symbol = 3;
 			}
 			else
 			{
-				now_symbol = 3;
+				now_symbol = 2;
 			}
 		}
 		now_symbol = (now_symbol + previous_symbol) % 4;

@@ -1,6 +1,6 @@
 #include "../inc/awgn.h"
 
-//#define TEMP
+// #define TEMP
 
 const double sym2sgnl1[4][2] = {
 		{ OneBySqrt2, OneBySqrt2},
@@ -24,6 +24,7 @@ int main(void)
 	Complex transmitted_signal[SYMBOLN], received_signal[SYMBOLN];
 	FILE *fp = NULL;
 	double CNR = 0.0;
+	double rand_phase = 0.0;
 
 	srand((unsigned)time(NULL));
 
@@ -51,12 +52,12 @@ int main(void)
 	for(Eb_N0 = SNR_START; Eb_N0 <= SNR_STOP; Eb_N0++)	/* SNR from 0-11 dB */
 	{
 		CNR = (double)Eb_N0 + 3.0;	/* QPSK provide 3dB improvement */
-
 		for(loop = 0; loop < LOOPN; loop++) 
 		{
+			rand_phase = ((double)rand() / RAND_MAX) * 2 * PI;
 			transmitter(transmitted_bit, transmitted_signal);
-			awgn(transmitted_signal, received_signal, CNR);
-			receiver(received_signal, received_bit);
+			awgn(transmitted_signal, received_signal, CNR, rand_phase);
+			receiver(received_signal, received_bit, rand_phase);
 			ber(loop, transmitted_bit, received_bit, fp, CNR);
 		}	
 	}
@@ -67,9 +68,16 @@ int main(void)
 #else
 int main()
 {
-	double val = 0.0001;
-	printf("val = %e", val);
-
-	return 0;
+	/* cos和sin是弧度制没问题  */
+	printf("cos(pi) = %f\n", cos(3.1415926));
+	printf("sin(pi) = %f\n", sin(3.1415926));
+	while(1)
+	{
+		double rand_phase = rand_phase = ((double)rand() / RAND_MAX) * 2 * PI;;
+		printf("rand_phase = %f\n", rand_phase);
+		printf("cos(rand_phase) = %f\n", cos(rand_phase));
+		printf("sin(rand_phase) = %f\n", sin(rand_phase));
+		getchar();
+	}
 }
 #endif

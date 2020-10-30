@@ -8,4 +8,4 @@ $(target): $(src) $(inc)
 
 .PHONY:clean
 clean:
-	-rm awgn
+	-rm $(target)

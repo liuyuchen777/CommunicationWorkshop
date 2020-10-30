@@ -18,7 +18,7 @@
 #define SNR_START			(0)
 #define SNR_STOP			(11)
 #define SYMBOLN				64
-#define BITN				(SYMBOLN*2)
+#define BITN				(SYMBOLN * 2)
 #define LOOPN				100000		/* 100 will occur zero error at SNR = 9, 10, 11 */
 #define FILENAME			"./data/non-coherent.dat"
 #define SYMBOL				(4)
@@ -26,7 +26,7 @@
 #define ON					1
 #define OFF					0
 
-#define PHASE_SHIFT			OFF
+#define PHASE_SHIFT			ON
 #define COHERENT			ON
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
@@ -37,7 +37,7 @@
 				printf("[%s: %d] "format"\n", __FUNCTION__, __LINE__, ##args);\
 			} while(0)
 #else
-	#define TT_PRINT(format, arg)
+	#define TT_PRINT(format, args...)
 #endif
 /*---------------------------------------------------------*/
 /* Complex Number                                          */
@@ -53,10 +53,10 @@ void transmitter(int *bit, Complex *signal);
 void bit_generator(int *bit);
 void DQPSK_modulator(int *bit, Complex *signal);
 void QPSK_modulator(int *bit, Complex *signal);
-void awgn(Complex *input_signal, Complex *output_signal, double CNR);
-void receiver(Complex *signal, int *bit);
+void awgn(Complex *input_signal, Complex *output_signal, double CNR, double rand_phase);
+void receiver(Complex *signal, int *bit, double rand_phase);
 void coherent_demodulator(Complex *signal, int *bit);
-void non_coherent_demodulator(Complex *signal, int *bit);
+void non_coherent_demodulator(Complex *signal, int *bit, double rand_phase);
 void ber(int loop, int *tbit, int *rbit, FILE *fp, double CNR);
 /*---------------------------------------------------------*/
 
