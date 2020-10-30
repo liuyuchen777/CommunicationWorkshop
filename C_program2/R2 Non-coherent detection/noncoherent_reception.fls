@@ -268,14 +268,11 @@ INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/goth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx8.tfm
-INPUT fig/without_shift.eps
-INPUT fig/without_shift.eps
-INPUT fig/phase_shift.eps
-INPUT fig/phase_shift.eps
-INPUT noncoherent_reception.bbl
-INPUT noncoherent_reception.bbl
-INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth9.tfm
-INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/goth9.tfm
-INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx9.tfm
 OUTPUT noncoherent_reception.dvi
+INPUT fig/system.pdf
+INPUT extractbb -B cropbox -O fig/system.pdf
+INPUT fig/without_shift.eps
+INPUT fig/without_shift.eps
+INPUT fig/phase_shift.eps
+INPUT fig/phase_shift.eps
 INPUT noncoherent_reception.aux

@@ -52,13 +52,31 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \begin{document}
 
 \begin{eabstract}
-
+In this second C workshop, we will use C language to simulate workflow of DQPSK modluation and non-coherent reception system over AWGN channel with phase shift. We will introduce the backgroud knowledege of DQPSK modulation and non-coherent reception. In the second part, we will state the system desgin of the simulation. The final part illustrate simulation design and result. From the result, we can see non-coherent reception achieve acceptable performance over phase shift channel.
 \end{eabstract}
 
 \maketitle
 
 \section{Introduction}
-
+In previous Labwork, we simulate transmission is over AWGN channel without any phase shift and receiver also have knowledge of carrier. Thus, we can use coherent reception to achieve ideal demodulation at receiver. However, in this Labwork, we introduce phase shift over AWGN channel, which will make coherent reception become invalid. Phase shift is very common in wireless communication. To handle this phenomenon, we deploy diffential coding at transimtter and non-coherent reception.\par
+At transmitter, Differential Quadrature Reference Phase Shift Keying (DQPSK) is adpoted. Compare to general QPSK, bit signal is not correspond to modulation symbol, but correspond to the differential between two symbols. For example, if previous symbol is $pi/2$, and the next two bits are 01, then the output of the modulator will be $pi$. The current phase of carrier is the summation of previous phase and the differential. The mapping of bit signal and differential phase is shown in Table 1.\par
+At receiver, non-coherent reception counteract the effect of phase shifting by demodulate signal by the multiplication of previous symbol and current symbol. The mathematics formula is shown as follow:
+\begin{equation}
+\begin{aligned}
+d(i)&=r(i)\cdot r^*(i)\\
+&=s(i)s^*(i)+\underbrace{s(i)n^*(i-1)e^{j\phi}+s^*(i-1)n(i)e^{-j\phi}+n(i)n^*(i-1)}_{redundant\quad part}
+\end{aligned}
+\end{equation}
+In (1) we can see after multiplication, the majority value of equation is $s(i)s^*(i-1)$ which is equal to the value of differential symbol, which we can see from:
+\begin{equation}
+\begin{aligned}
+s(i)s^*(i-1)&=e^{j\delta\theta_i}s(i-1)s^*(i-1)\\
+&=e^{j\delta\theta_i}|s(i-1)|^2\\
+&=e^{j\delta\theta_i}\\
+&=d(i)
+\end{aligned}
+\end{equation}
+Thus, we can demodulate the bit signal from non-coherent reception over channel with phase shift. The redundant part can be seen as noise. Because the redundant part is more than $n(i)$ (guassian white noise), thus the performance of non-coherent reception will worese than coherent reception when there isn't any phase shift.
 
 \begin{table}[tbp]
 	\begin{center}
@@ -87,17 +105,32 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 	\hline
 	Moduation Method & DQPSK \\
 	Transmission Bits & 128 \\
-	Channel & AWGN \\
+	Channel & AWGN with Phase Shift \\
 	Detection & Noncoherent and Coherent Detection \\
 	Number of Trials & $10^{6}$\\
-	Distribution of Phase Shift & $U[0,2\pi]$\\
+	Distribution of Phase Shift & ${\rm U}[0,2\pi]$\\
 	\hline
 	\end{tabular}
 	\end{center}
 \end{table}
 
 \section{Simulation and Result}
+Fig.1 shows the whole system architecture, the phase shift is realized by multiply a rand varible $\phi$ obey uniform distribution to signal $s(i)$. The channel formula is shown as follow:\begin{equation}
+r(i)=s(i)e^{j\phi}+n(i)
+\end{equation}
+And theortical BER for DQPSK over phase shift AWGN channel can be shown as follow, and $\gamma$ in equation is SNR:
+\begin{equation}
+p_e \simeq \frac{1}{2}{\rm erfc}\left \{ 2\sqrt{\gamma}\sin(\frac{\pi}{8}) \right \}
+\end{equation}
+We can see the simulation result from Fig.2 and Fig.3. Fig.2 shows the Bit Error Rate (BER) over AWGN channel without phase shift when the SNR starts from 0 dB to 11 dB, which we can see the non-coherent reception perform worse in BER under such situation. While in the Fig.2, BER of coherent reception over AWGN with phase shift is completely inacceptable, but the coherent reception have same performance as when there is no phase shift.
 
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[scale=0.5]{fig/system.pdf}
+		\caption{System Block Diagram}
+		\label{fig:label}
+	\end{center}
+\end{figure}
 
 \begin{figure}[tbp]
 	\begin{center}
@@ -118,9 +151,6 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \end{figure}
 
 \section{Conclusion}
-
-
-\bibliographystyle{IEEEtran}
-\bibliography{non_coherent.bib}
+In conclusion, non-coherent reception provide acceptable BER performance over phase shift AWGN channel, although the peformance is worse than coherent reception when threr isn't any phase shift. On the other hand, non-coherent doesn't need knowlege of carrier, which is another advantage over coherent reception.
 
 \end{document} 
