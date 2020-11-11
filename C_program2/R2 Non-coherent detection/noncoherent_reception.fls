@@ -182,6 +182,10 @@ INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tik
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/makecell/makecell.sty
+INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/makecell/makecell.sty
+INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/tools/array.sty
+INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/tools/array.sty
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
@@ -268,9 +272,9 @@ INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/goth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx8.tfm
-OUTPUT noncoherent_reception.dvi
 INPUT fig/system.pdf
 INPUT extractbb -B cropbox -O fig/system.pdf
+OUTPUT noncoherent_reception.dvi
 INPUT fig/without_shift.eps
 INPUT fig/without_shift.eps
 INPUT fig/phase_shift.eps

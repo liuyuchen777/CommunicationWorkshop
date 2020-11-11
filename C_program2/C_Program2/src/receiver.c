@@ -82,8 +82,8 @@ void non_coherent_demodulator(Complex *signal, int*bit, double rand_phase)
 	Complex temp;
 	
 #if PHASE_SHIFT == ON
-	previous_symbol.real = cos(rand_phase);
-	previous_symbol.image = sin(rand_phase);
+	previous_symbol.real = 1.0;
+	previous_symbol.image = 0.0;
 #else
 	previous_symbol.real = 1.0;
 	previous_symbol.image = 0.0;

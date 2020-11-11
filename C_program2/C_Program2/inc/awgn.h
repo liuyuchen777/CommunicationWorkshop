@@ -27,7 +27,7 @@
 #define OFF					0
 
 #define PHASE_SHIFT			ON
-#define COHERENT			ON
+#define COHERENT			OFF
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
 /*---------------------------------------------------------*/

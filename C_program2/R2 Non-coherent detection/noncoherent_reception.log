@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.sjis) (TeX Live 2020/W32TeX) (preloaded format=platex 2020.10.14)  30 OCT 2020 21:46
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.sjis) (TeX Live 2020/W32TeX) (preloaded format=platex 2020.10.14)  11 NOV 2020 08:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -638,6 +638,23 @@ rrows.code.tex
 File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \arrowsize=\dimen287
 )))
+(d:/Program Files/texlive/2020/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+(d:/Program Files/texlive/2020/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen288
+\ar@mcellbox=\box99
+\extrarowheight=\dimen289
+\NC@list=\toks36
+\extratabsurround=\skip53
+\backup@length=\skip54
+\ar@cellbox=\box100
+)
+\rotheadsize=\dimen290
+\c@nlinenum=\count292
+\TeXr@lab=\toks37
+)
 (d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/li
 braries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2020/01/08 v3.1.5b (3.1.5b)
@@ -651,19 +668,19 @@ braries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 
-Class ieicej Warning: Author's name "りゅう　ゆしん" doesn't have a space.
+Class ieicej Warning: Author's name "劉　ゆ辰" doesn't have a space.
 
 
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvips.d
 ef
 File: l3backend-dvips.def 2020-03-12 L3 backend support: dvips
-\l__pdf_internal_box=\box99
-\g__pdf_backend_object_int=\count292
-\l__pdf_backend_content_box=\box100
-\l__pdf_backend_model_box=\box101
-\g__pdf_backend_annotation_int=\count293
-\g__pdf_backend_link_int=\count294
-\g__pdf_backend_link_sf_int=\count295
+\l__pdf_internal_box=\box101
+\g__pdf_backend_object_int=\count293
+\l__pdf_backend_content_box=\box102
+\l__pdf_backend_model_box=\box103
+\g__pdf_backend_annotation_int=\count294
+\g__pdf_backend_link_int=\count295
+\g__pdf_backend_link_sf_int=\count296
 ) (./noncoherent_reception.aux
 
 LaTeX Warning: Label `fig:sample' multiply defined.
@@ -671,27 +688,27 @@ LaTeX Warning: Label `fig:sample' multiply defined.
 )
 \openout1 = `noncoherent_reception.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
  (I search kanjifont definition file: . . ) (I search font definition file: .
 . . . . . . )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 52
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53
 .
  (d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -732,98 +749,97 @@ ABD: EveryShipout initializing macros
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 54.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 54.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 54.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 54.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 55.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
-8.
+9.
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
-8.
+9.
 
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-58.
+59.
 
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-58.
+59.
 
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 58.
+(Font)              <12> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 58.
+(Font)              <8> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 58.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 58
+(Font)              <6> on input line 59.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 59
 .
 
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 58.
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.5> on input line 58.
+(Font)              <10.5> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.34996> on input line 58.
+(Font)              <7.34996> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.25> on input line 58.
+(Font)              <5.25> on input line 59.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 58.
+(Font)              size <10.95> substituted on input line 59.
 
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 60.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10.95> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 60.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 60.
+(Font)              <9> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 60.
+(Font)              <5> on input line 61.
 
-Overfull \hbox (46.88577pt too wide) detected at line 69
+Overfull \hbox (0.88272pt too wide) detected at line 71
 [][]
  []
 
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <8> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 86.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 86.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <8> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 86.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 86.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 88.
+File: fig/system.pdf Graphic file (type pdf)
+<fig/system.pdf>
 
-Overfull \hbox (20.89766pt too wide) in paragraph at lines 102--114
- [][][] 
+Overfull \hbox (7.71152pt too wide) in paragraph at lines 101--102
+ [] 
  []
 
 [1
 
 
 ]
-File: fig/system.pdf Graphic file (type pdf)
-<fig/system.pdf>
-
-Overfull \hbox (7.71152pt too wide) in paragraph at lines 129--130
+Overfull \hbox (5.78624pt too wide) in paragraph at lines 124--136
  [] 
  []
 
@@ -840,12 +856,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15687 strings out of 481140
- 331921 string characters out of 5915129
- 597819 words of memory out of 5000000
- 31387 multiletter control sequences out of 15000+600000
+ 15890 strings out of 481140
+ 334224 string characters out of 5915129
+ 602514 words of memory out of 5000000
+ 31583 multiletter control sequences out of 15000+600000
  604026 words of font info for 103 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 60i,14n,71p,524b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,71p,463b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on noncoherent_reception.dvi (2 pages, 10496 bytes).
+Output written on noncoherent_reception.dvi (2 pages, 10552 bytes).
