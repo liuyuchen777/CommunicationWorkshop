@@ -19,15 +19,23 @@
 #define SNR_STOP			(11)
 #define SYMBOLN				64
 #define BITN				(SYMBOLN * 2)
-#define LOOPN				100000		/* 100 will occur zero error at SNR = 9, 10, 11 */
+#define LOOPN				(100000)		/* 100 will occur zero error at SNR = 9, 10, 11 */
 #define FILENAME			"./data/non-coherent.dat"
 #define SYMBOL				(4)
+#define Fd					(0)
+#define WAVES				(8)
+#define SYMBOL_RATE			(42.0e3)
+#define Ts					(1.0/SYMBOL_RATE)
 
 #define ON					1
 #define OFF					0
 
-#define PHASE_SHIFT			ON
-#define COHERENT			OFF
+#define AWGN				0
+#define RAYLEIGH			1
+#define SELECT				2
+
+#define COHERENT			ON
+#define CHANNEL				RAYLEIGH
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
 /*---------------------------------------------------------*/
@@ -53,11 +61,12 @@ void transmitter(int *bit, Complex *signal);
 void bit_generator(int *bit);
 void DQPSK_modulator(int *bit, Complex *signal);
 void QPSK_modulator(int *bit, Complex *signal);
-void channel(Complex *input_signal, Complex *output_signal, double CNR, double rand_phase);
-void receiver(Complex *signal, int *bit, double rand_phase);
+void channel(Complex *input_signal, Complex *output_signal, double CNR);
+void receiver(Complex *signal, int *bit);
 void coherent_demodulator(Complex *signal, int *bit);
-void non_coherent_demodulator(Complex *signal, int *bit, double rand_phase);
+void non_coherent_demodulator(Complex *signal, int *bit);
 void ber(int loop, int *tbit, int *rbit, FILE *fp, double CNR);
+double Guassian_Generator(double sigma2);
 /*---------------------------------------------------------*/
 
 #endif

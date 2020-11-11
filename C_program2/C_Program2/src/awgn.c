@@ -1,6 +1,21 @@
 #include "../inc/awgn.h"
 
-void awgn(Complex *input_signal, Complex *output_signal, double CNR, double rand_phase)
+#define WAVES 8
+
+void add_random_noise(Complex *input_signal, Complex *output_signal, double CNR);
+void add_phase_shift(Complex *input_signal, Complex *output_signal, double rand_phase);
+
+void channel(Complex *input_signal, Complex *output_signal, double CNR, double rand_phase)
+{
+#if PHASE_SHIFT == ON
+	add_phase_shift(input_signal, input_signal, rand_phase);
+	add_random_noise(input_signal, output_signal, CNR);
+#else
+	add_random_noise(input_signal, output_signal, CNR);
+#endif
+}
+
+void add_random_noise(Complex *input_signal, Complex *output_signal, double CNR)
 {
 	int i = 0;
 	double r1, r2;	/* uniform distribution */
@@ -17,14 +32,20 @@ void awgn(Complex *input_signal, Complex *output_signal, double CNR, double rand
 			r2 = 1.0e-10; 
 		gaussian = sqrt(-sigma2 * log(r1));
 
-#if PHASE_SHIFT == ON
-		output_signal[i].real = (input_signal[i].real * cos(rand_phase) - input_signal[i].image * sin(rand_phase)) + 
-								+ gaussian * cos(2.0 * PI * r2);
-		output_signal[i].image = (input_signal[i].real * sin(rand_phase) + input_signal[i].image * cos(rand_phase)) +
-								+ gaussian * sin(2.0 * PI * r2);
-#else
 		output_signal[i].real = input_signal[i].real + gaussian * cos(2.0 * PI * r2);
 		output_signal[i].image = input_signal[i].image + gaussian * sin(2.0 * PI * r2);
-#endif
+	}
+}
+
+void add_phase_shift(Complex *input_signal, Complex *output_signal, double rand_phase)
+{
+	int i = 0;
+	Complex temp;
+	for (i = 0; i < SYMBOLN; i++)
+	{
+		temp.real = input_signal[i].real * cos(rand_phase) - input_signal[i].image * sin(rand_phase);
+		temp.image = input_signal[i].real * sin(rand_phase) + input_signal[i].image * cos(rand_phase);
+		input_signal[i].real = temp.real;
+		input_signal[i].image = temp.image;
 	}
 }
