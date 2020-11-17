@@ -1,9 +1,11 @@
 #include "../inc/awgn.h"
 
-Complex channel_state[SYMBOLN];
+Complex channel_state_0[(GROUP*SYMBOLN)];
+Complex channel_state_1[(GROUP*SYMBOLN)];
 
 void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR);
 void awgn(Complex *input_signal, Complex *output_signal, double CNR);
+void select_channel(Complex *input_signal, Complex *output_signal, double CNR);
 
 void channel(Complex *input_signal, Complex *output_signal, double CNR)
 {
@@ -12,6 +14,7 @@ void channel(Complex *input_signal, Complex *output_signal, double CNR)
 #elif CHANNEL == AWGN
 	awgn(input_signal, output_signal, CNR);
 #elif CHANNEL == SELECT
+	select(input_signal, output_signal, CNR);
 #endif
 }
 
@@ -21,11 +24,7 @@ double Guassian_Generator(double sigma2)
 	double gaussian = 0.0;
 
 	r1 = (double)rand() / RAND_MAX;
-	if (r1 <= 1.0e-10)
-		r1 = 1.0e-10;
 	r2 = (double)rand() / RAND_MAX;
-	if (r2 <= 1.0e-10)
-		r2 = 1.0e-10; 
 	gaussian = sqrt(-sigma2 * log(r1));
 
 	return gaussian * cos(2.0 * PI * r2);
@@ -33,24 +32,54 @@ double Guassian_Generator(double sigma2)
 
 void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 {
-	int i = 0;
+	/* for calculate channel state information */
+	double An[WAVES];
+	double Phin[WAVES];
+	double Thetan[WAVES];
+	double all_in_bracket = 0.0;
+	int count1 = 0, count2 = 0;
 	double sigma2 = pow(10, (-CNR) / 10);
 	Complex temp = {0.0, 0.0};
-	Complex noise_orign = {0.0, 0.0};
-	Complex noise_after = {0.0, 0.0};
 
-	for (i = 0; i < SYMBOLN; i++)
+	/* calculate channel state information */
+	for (count1 = 0; count1 < WAVES; count1++)
 	{
-		noise_orign.real = Guassian_Generator(sigma2);
-		noise_orign.image = Guassian_Generator(sigma2);
-		temp.real = channel_state[i].real / (pow(channel_state[i].real, 2) + pow(channel_state[i].image, 2));
-		temp.image = -channel_state[i].image / (pow(channel_state[i].real, 2) + pow(channel_state[i].image, 2));
-		noise_after.real = noise_orign.real * temp.real - noise_orign.image * temp.image;
-		noise_after.image = noise_orign.real * temp.image + noise_orign.image * temp.real;
-
-		output_signal[i].real = input_signal[i].real + noise_after.real;
-		output_signal[i].image = input_signal[i].image + noise_after.image;
+		An[count1] = Guassian_Generator(0.125);
+		Phin[count1] = ((double)rand()/RAND_MAX) * (2 * PI);
+		Thetan[count1] = ((double)rand()/RAND_MAX) * (2 * PI);
 	}
+	for (count1 = 0; count1 < (SYMBOLN * GROUP); count1++)
+	{
+		channel_state_0[count1].real = 0.0;
+		channel_state_0[count1].image = 0.0;
+		for (count2 = 0; count2 < WAVES; count2++)
+		{
+			all_in_bracket = 2 * PI * Fd * cos(Thetan[count2]) * count1 * Ts + Phin[count2];
+			temp.real = An[count2] * cos(all_in_bracket);
+			temp.image = An[count2] * sin(all_in_bracket);
+			channel_state_0[count1].real += temp.real;
+			channel_state_0[count1].image += temp.image;
+		}
+	}
+	/* multiply to channel */
+	for (count1 = 0; count1 < (SYMBOLN * GROUP); count1++)
+	{
+		output_signal[count1].real = channel_state_0[count1].real * input_signal[count1].real 
+					- channel_state_0[count1].image * input_signal[count1].image;
+		output_signal[count1].image = channel_state_0[count1].real * input_signal[count1].image 
+					+ channel_state_0[count1].image * input_signal[count1].real;
+	}
+	/* add AWGN  */
+	for (count1 = 0; count1 < (SYMBOLN * GROUP); count1++)
+	{
+		output_signal[count1].real += Guassian_Generator(sigma2);
+		output_signal[count1].image += Guassian_Generator(sigma2);
+	}
+}
+
+void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
+{
+
 }
 
 void awgn(Complex *input_signal, Complex *output_signal, double CNR)

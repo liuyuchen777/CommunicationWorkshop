@@ -2,6 +2,9 @@
 
 #define LARGE_NUM	(6553600.0)
 
+extern Complex channel_state_0[(GROUP*SYMBOLN)];
+extern Complex channel_state_1[(GROUP*SYMBOLN)];
+
 extern const double sym2sgnl1[4][2];
 extern const double sym2sgnl2[4][2];
 
@@ -59,10 +62,26 @@ int MLE2(Complex *symbol)
 void coherent_demodulator(Complex *signal, int *bit)
 {
 	int decision_flag = 0;
-	int i = 0;
-
+	int i = 0, j = 0;
+	Complex temp = {0.0, 0.0};
+	double norm = 0.0;
+	/* channel estimation */
+	for (i = 0; i < GROUP; i++)
+	{
+		for (j = 0; j < SYMBOLN; j++)
+		{
+			norm = pow(channel_state_0[j].real, 2.0) + pow(channel_state_0[j].image, 2.0);
+			temp.real = (signal[i * SYMBOLN + j].real * channel_state_0[j].real 
+							+ signal[i * SYMBOLN + j].image * channel_state_0[j].image) / norm;
+			temp.image = (signal[i * SYMBOLN + j].image * channel_state_0[j].real 
+							- signal[i * SYMBOLN + j].real * channel_state_0[j].image) / norm;
+			signal[i * SYMBOLN + j].real = temp.real;
+			signal[i * SYMBOLN + j].image = temp.image;
+		}
+	}
 	/* caculate which point is nearest */
-	for (i = 0; i < SYMBOLN; i++) {
+	for (i = 0; i < (GROUP * SYMBOLN); i++) 
+	{
 		switch (MLE1(&(signal[i])))
 		{
 			case 0: bit[i * 2] = 0; bit[i * 2 + 1] = 0; break;
@@ -76,22 +95,34 @@ void coherent_demodulator(Complex *signal, int *bit)
 void non_coherent_demodulator(Complex *signal, int*bit)
 {
 	/* need combine with previous symbol */
-	int i = 0;
+	int i = 0, j = 0;
 	Complex previous_symbol;
 	int diff_symbol = 0;
 	Complex temp;
+	double norm = 0.0;
 	
 	previous_symbol.real = 1.0;
 	previous_symbol.image = 0.0;
-
-	for (i = 0; i < SYMBOLN; i++)
+	/* channel estimation */
+	for (i = 0; i < GROUP; i++)
 	{
-		// TT_PRINT("signal[i].real = %f, singal[i].image = %f", signal[i].real, signal[i].image);
-		// TT_PRINT("previous_symbol.real = %f, previous_symbol.image = %f", previous_symbol.real, previous_symbol.image);
+		for (j = 0; j < SYMBOLN; j++)
+		{
+			norm = pow(channel_state_0[j].real, 2.0) + pow(channel_state_0[j].image, 2.0);
+			temp.real = (signal[i * SYMBOLN + j].real * channel_state_0[j].real 
+							+ signal[i * SYMBOLN + j].image * channel_state_0[j].image) / norm;
+			temp.image = (signal[i * SYMBOLN + j].image * channel_state_0[j].real 
+							- signal[i * SYMBOLN + j].real * channel_state_0[j].image) / norm;
+			signal[i * SYMBOLN + j].real = temp.real;
+			signal[i * SYMBOLN + j].image = temp.image;
+		}
+	}
+
+	for (i = 0; i < (GROUP * SYMBOLN); i++)
+	{
+		/* dufferential */
 		temp.real = signal[i].real * previous_symbol.real + signal[i].image * previous_symbol.image;
 		temp.image = signal[i].image * previous_symbol.real - signal[i].real * previous_symbol.image;
-		// printf("temp.real = %f, temp.image = %f\n", temp.real, temp.image);
-		// getchar();
 		diff_symbol = MLE2(&(temp));
 		switch (diff_symbol)
 		{

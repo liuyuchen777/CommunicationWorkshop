@@ -1,4 +1,4 @@
-target=coherent
+target=fading
 src=$(wildcard ./src/*.c)
 inc=$(wildcard ./inc/*.h)
 

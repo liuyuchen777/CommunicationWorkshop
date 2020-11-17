@@ -29,7 +29,7 @@ void QPSK_modulator(int (*bit), Complex *signal){
 		{ 3, 2}
 	};
 	
-	for(n=0; n < SYMBOLN; n++){
+	for(n=0; n < (GROUP * SYMBOLN); n++){
 		bit1 = bit[n * 2];
 		bit2 = bit[n * 2 + 1];
 		symbol = bin2sym[bit1][bit2];
@@ -45,7 +45,7 @@ void DQPSK_modulator(int *bit, Complex *signal)
 	int now_symbol = 0;
 	int i = 0;
 
-	for (i = 0; i < SYMBOLN; i++)
+	for (i = 0; i < (SYMBOLN * GROUP); i++)
 	{
 		if (bit[2 * i] == 0)
 		{
