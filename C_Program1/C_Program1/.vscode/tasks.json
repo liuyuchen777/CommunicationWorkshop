@@ -6,9 +6,11 @@
             "command": "/usr/bin/gcc-9",
             "args": [
                 "-g",
-                "${file}",
+                "-lm",
+                "${workspaceFolder}/src/*.c",
+                "-I","${workspaceFolder}/inc",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "/usr/bin"

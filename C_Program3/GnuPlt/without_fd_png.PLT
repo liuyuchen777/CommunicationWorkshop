@@ -8,7 +8,7 @@ set key right top
 set xlabel "E_b/N_0 (dB)"
 set ylabel "Average BER"
 set logscale y
-set xrange [0:45]
+set xrange [0:30]
 set yrange [0.0000001:1]
 set format y "10^{%T}"
 plot 0.5*(1-sqrt((10**((x-3)/10))/(10**((x-3)/10)+1))) t "Non-coherent Theory" w lp lt 2 pt 0,\
