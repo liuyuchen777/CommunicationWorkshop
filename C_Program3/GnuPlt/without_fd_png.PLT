@@ -1,7 +1,7 @@
 set terminal postscript portrait enhanced "Helvetica" 12
 
 set terminal png size 800,500
-set output 'without_fd.png'
+set output 'without_fd.jpg'
 
 set grid
 set key right top

@@ -1,9 +1,9 @@
-PWD D:/Local_Lab/Commuication_Workshop/C_program2/R2 Non-coherent detection
+PWD D:/Local_Lab/Commuication_Workshop/C_Program3/R3 Rayleigh
 INPUT d:/Program Files/texlive/2020/texmf.cnf
 INPUT d:/Program Files/texlive/2020/texmf-dist/web2c/texmf.cnf
 INPUT d:/Program Files/texlive/2020/texmf-var/web2c/eptex/platex.fmt
-INPUT noncoherent_reception.tex
-OUTPUT noncoherent_reception.log
+INPUT rayleigh.tex
+OUTPUT rayleigh.log
 INPUT ieicej.cls
 INPUT ieicej.cls
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map
@@ -194,9 +194,9 @@ INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tik
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
-INPUT noncoherent_reception.aux
-INPUT noncoherent_reception.aux
-OUTPUT noncoherent_reception.aux
+INPUT rayleigh.aux
+INPUT rayleigh.aux
+OUTPUT rayleigh.aux
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/omllmr.fd
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/ot1lmr.fd
@@ -272,11 +272,5 @@ INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/goth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx8.tfm
-INPUT fig/system.pdf
-INPUT extractbb -B cropbox -O fig/system.pdf
-OUTPUT noncoherent_reception.dvi
-INPUT fig/without_shift.eps
-INPUT fig/without_shift.eps
-INPUT fig/phase_shift.eps
-INPUT fig/phase_shift.eps
-INPUT noncoherent_reception.aux
+OUTPUT rayleigh.dvi
+INPUT rayleigh.aux
