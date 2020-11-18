@@ -37,7 +37,7 @@
 #define SELECT				2
 
 #define COHERENT			OFF
-#define CHANNEL				RAYLEIGH
+#define CHANNEL				SELECT
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
 /*---------------------------------------------------------*/

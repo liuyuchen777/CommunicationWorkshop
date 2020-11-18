@@ -39,12 +39,12 @@ $\mathcal A$\lower.4ex\hbox{$\!\mathcal M\!$}$\mathcal S$-\LaTeX}
 \def\BibTeX{{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 
-\jtitle{M1課題レポート 第2回}
+\jtitle{M1課題レポート 第3回}
 \jsubtitle{}
-\etitle{Technical Report for M1 Labwork 2nd}
+\etitle{Technical Report for M1 Labwork 3rd}
 \esubtitle{}
 \authorlist{
-\authorentry[liuyuchen@radio.ict.e.titech.ac.jp]{劉　ゆ辰}{Yuchen Liu}{Titech}
+\authorentry[liuyuchen@radio.ict.e.titech.ac.jp]{Liu Yuchen}{Yuchen Liu}{Titech}
 }
 
 \affiliate[Titech]{東京工業大学　〒152-8550　東京都目黒区大岡山2-12-1}
@@ -53,7 +53,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \begin{document}
 
 \begin{eabstract}
-hello
+In this third C workshop, we use C language to simulate fading in wireless communication due to delay and multi-path of transmission. In this workshop, we mainly simulate two fading channel: Rayleigh Fading Channel and Selective Fading Channel. First, we introduce the backgroud knowledege of these two fading channel. Next, we state the whole system desgin and simulation condition. Finally, we can see simulation BER of these two fading channel in different Doppler Shift with different doppler shift compare to theoretical value\cite{wireless_com}.
 \end{eabstract}
 
 \maketitle
@@ -61,24 +61,50 @@ hello
 \section{Introduction}
 
 
+\section{Simulation Desgin}
+
 \begin{table}[tbp]
 	\begin{center}
-	\caption{MAPPING TABLE OF PHASE}
-	\begin{tabular}{lll}
+	\caption{ACRONYMS AND FULL MEANING}
+	\begin{tabular}{|l|l|}
 	\hline
-	\textbf{bitA} & \textbf{bitB} & \textbf{$\Delta\theta_{i}$} \\
+	\textbf{Acronyms} & \textbf{Full Form} \\
 	\hline
-	\makecell[c]{0} & \makecell[c]{0} & \makecell[c]{$0$} \\
-	\makecell[c]{1} & \makecell[c]{0} & \makecell[c]{$\frac{pi}{2}$} \\
-	\makecell[c]{1} & \makecell[c]{1} & \makecell[c]{$\pi$} \\
-	\makecell[c]{1} & \makecell[c]{0} & \makecell[c]{$\frac{3\pi}{2}$} \\
-	\hline
+	 MLE & Maximum Likelihood Estimator  \\ 
+	 \hline
+	 QPSK & Quadrature Phase Shift Keying  \\ 
+	 \hline
+	 DQPSK & Differential Quadrature Phase Shift Keying  \\
+	 \hline
+	 SNR & Signal Noise Ratio \\ 
+	 \hline
+	 CNR & Channel Noise Ratio  \\ 
+	 \hline
+	 AWGN & Additive White Gaussian Noise \\ 
+	 \hline
+	 BW & Band Width  \\ 
+	 \hline
 	\end{tabular}
 	\end{center}
 \end{table}
 
-\section{Simulation Desgin}
+\begin{figure}[tbp]
+	\begin{center}
+		\vspace{0cm}
+		\includegraphics[width=\linewidth,clip]{fig/rayleigh_group.pdf}
+		\caption{Illustration of Rayleigh Fading Channel}
+		\label{fig:sample}
+	\end{center}
+\end{figure}
 
+\begin{figure}[tbp]
+	\begin{center}
+		\vspace{0cm}
+		\includegraphics[width=\linewidth,clip]{fig/select_fading_illustrate.pdf}
+		\caption{Illustration of Frequency Selective Fading Channel}
+		\label{fig:sample}
+	\end{center}
+\end{figure}
 
 \begin{table}[hb]
 	\begin{center}
@@ -89,18 +115,58 @@ hello
 	\hline
 	ITEMS & CONDITIONS\\
 	\hline
-	Moduation Method & DQPSK \\
+	Moduation Method & QPSK/DQPSK \\
 	Transmission Bits & 128 \\
-	Channel & AWGN with Phase Shift \\
+	Group Size & 14 \\
+	Channel & Rayleigh Fading/Selective Fading Channel \\
 	Detection & Noncoherent/Coherent Detection \\
-	Number of Trials & $10^{6}$\\
-	Distribution of Phase Shift & ${\rm U}[0,2\pi]$\\
+	Number of Trials & $10^{4}$ \\
+	Decision Method & MLE \\
+	Channel Estimation & $\hat{h}=h$ \\
 	\hline
 	\end{tabular}
 	\end{center}
 \end{table}
 
+\begin{figure}[tbp]
+	\begin{center}
+		\vspace{0cm}
+		\includegraphics[width=\linewidth,clip]{fig/r_coherent.pdf}
+		\caption{Coherent Demodulation BER with and without Phase Shift in Rayleigh Fading Channel}
+		\label{fig:sample}
+	\end{center}
+\end{figure}
+
+\begin{figure}[tbp]
+	\begin{center}
+		\vspace{0cm}
+		\includegraphics[width=\linewidth,clip]{fig/without_fd.pdf}
+		\caption{Theoretic and Simulation BER without Doppler Shift in Rayleigh Fading Channel}
+		\label{fig:sample}
+	\end{center}
+\end{figure}
+
+\begin{figure}[tbp]
+	\begin{center}
+		\vspace{0cm}
+		\includegraphics[width=\linewidth,clip]{fig/with_fd.pdf}
+		\caption{QPSK and Noncoherent Demodulation BER with Different Doppler Shift in Rayleigh Fading Channel}
+		\label{fig:sample}
+	\end{center}
+\end{figure}
+
+\begin{figure}[tbp]
+	\begin{center}
+		\vspace{0cm}
+		\includegraphics[width=\linewidth,clip]{fig/select.pdf}
+		\caption{QPSK and Noncoherent Demodulation BER with Different Doppler Shift in Selective Fading Channel}
+		\label{fig:sample}
+	\end{center}
+\end{figure}
+
 \section{Simulation Result and Conclusion}
 
+\bibliographystyle{IEEEtran}
+\bibliography{rayleigh.bib}
 
 \end{document} 

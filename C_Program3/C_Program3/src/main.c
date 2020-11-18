@@ -53,7 +53,7 @@ int main(void)
 			printf("rayleigh fading channel.\n");
 			fprintf(fp, "rayleigh fading channel.\n");
 #elif CHANNEL == SELECT
-			printf("rayleigh fading channel.\n");
+			printf("selective fading channel.\n");
 			fprintf(fp, "selective fading channel.\n");
 #endif
 	}
@@ -79,10 +79,7 @@ int main(void)
 
 int main()
 {
-	while(1)
-	{
-		printf("randAn = %f\n", Guassian_Generator(0.125));
-		getchar();
-	}
+	double x = 2.0;
+	printf("x ** 100 = %f", pow(x, 10000.0));
 }
 #endif

@@ -44,7 +44,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \etitle{Technical Report for M1 Labwork 2nd}
 \esubtitle{}
 \authorlist{
-\authorentry[liuyuchen@radio.ict.e.titech.ac.jp]{劉　ゆ辰}{Yuchen Liu}{Titech}
+\authorentry[liuyuchen@radio.ict.e.titech.ac.jp]{Liu　Yuchen}{Yuchen Liu}{Titech}
 }
 
 \affiliate[Titech]{東京工業大学　〒152-8550　東京都目黒区大岡山2-12-1}
@@ -53,32 +53,31 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \begin{document}
 
 \begin{eabstract}
-In this second C workshop, we use C language to simulate workflow of DQPSK modulation and non-coherent demodulation system over AWGN channel with phase shift. We first introduce the backgroud knowledege of DQPSK modulation and non-coherent demodulation. Next, we state the whole system desgin and simulation condition. From the result, we can see non-coherent demodulation achieve acceptable performance over phase shift channel.
+In this second C workshop, we use C language to simulate workflow of DQPSK and non-coherent demodulation system over AWGN channel with phase shift. First, we introduce the backgroud knowledege of DQPSK modulation and non-coherent demodulation. Next, we state the whole system desgin and simulation condition. From the result, we can see non-coherent demodulation achieve acceptable performance over phase shift channel.
 \end{eabstract}
 
 \maketitle
 
 \section{Introduction}
-In this Labwork, we introduce phase shift over AWGN channel, which will make coherent reception become unachievable. Phase shift is very common in wireless communication. To handle this phenomenon, we deploy diffential coding at transimtter and non-coherent reception.\par
-At transmitter, Differential Quadrature Reference Phase Shift Keying (DQPSK) is adpoted. Compare to general Quadrature Reference Phase Shift Keying (QPSK), bit signal is not correspond to modulation symbol, but correspond to the differential between two symbols.The current phase of carrier is the summation of previous phase and the differential. The mapping of bit signal and differential phase is shown in Table 1.\par
-At receiver, non-coherent reception counteract the effect of phase shifting by demodulate signal by the multiplication of previous symbol and current symbol. The mathematics formula is shown as follow:
+In this Labwork, we introduce phase shift over AWGN channel, which will make coherent reception become unachievable but is very common in wireless communication. To handle this phenomenon, we deploy diffential coding at transimtter and non-coherent reception.\par
+At transmitter, Differential Quadrature Reference Phase Shift Keying (DQPSK) is adpoted. Compare to general Quadrature Reference Phase Shift Keying (QPSK), bit signal is not correspond to modulation symbol, but correspond to the differential between two symbols.The current phase of carrier is the summation of previous phase and the differential. The mapping of bit signal and differential phase is shown in Table 1.At receiver, non-coherent reception counteract the effect of phase shifting by demodulate signal by the multiplication of previous symbol and current symbol. The mathematics formula is shown as follow:
 \begin{equation}
 \begin{aligned}
 d(i)&=r(i)\cdot r^*(i-1)\\
-&=s(i)s^*(i)\\
+&=s(i)s^*(i-1)\\
 &+\underbrace{s(i)n^*(i-1)e^{j\phi}+s^*(i-1)n(i)e^{-j\phi}+n(i)n^*(i-1)}_{\rm redundant\quad part}
 \end{aligned}
 \end{equation}
 In (1) we can see after multiplication, the majority value of equation is $s(i)s^*(i-1)$ which is equal to the value of differential symbol, which we can see from:
 \begin{equation}
 \begin{aligned}
-s(i)s^*(i-1)&=e^{j\delta\theta_i}s(i-1)s^*(i-1)\\
-&=e^{j\delta\theta_i}|s(i-1)|^2\\
-&=e^{j\delta\theta_i}\\
+s(i)s^*(i-1)&=e^{j\Delta\theta_i}s(i-1)s^*(i-1)\\
+&=e^{j\Delta\theta_i}|s(i-1)|^2\\
+&=e^{j\Delta\theta_i}\\
 &=d(i)
 \end{aligned}
 \end{equation}
-Thus, we can demodulate signal from non-coherent reception over channel with phase shift and redundant part can be seen as noise. Because the redundant part is larger than $n(i)$, thus the performance of non-coherent reception will be worse than coherent reception when there isn't any phase shift.
+Thus, we can demodulate signal from non-coherent reception over channel with phase shift and redundant part can be seen as noise\cite{486610}. Because the redundant part is larger than $n(i)$, thus the performance of non-coherent reception will be worse than coherent reception when there isn't any phase shift.
 
 \begin{table}[tbp]
 	\begin{center}
@@ -88,7 +87,7 @@ Thus, we can demodulate signal from non-coherent reception over channel with pha
 	\textbf{bitA} & \textbf{bitB} & \textbf{$\Delta\theta_{i}$} \\
 	\hline
 	\makecell[c]{0} & \makecell[c]{0} & \makecell[c]{$0$} \\
-	\makecell[c]{1} & \makecell[c]{0} & \makecell[c]{$\frac{pi}{2}$} \\
+	\makecell[c]{1} & \makecell[c]{0} & \makecell[c]{$\frac{\pi}{2}$} \\
 	\makecell[c]{1} & \makecell[c]{1} & \makecell[c]{$\pi$} \\
 	\makecell[c]{1} & \makecell[c]{0} & \makecell[c]{$\frac{3\pi}{2}$} \\
 	\hline
@@ -105,13 +104,13 @@ Thus, we can demodulate signal from non-coherent reception over channel with pha
 \end{figure}
 
 \section{Simulation Desgin}
-Fig.1 shows the whole system architecture, the phase shift is realized by multiply a rand varible $\phi$ obey uniform distribution to signal $s(i)$. The channel formula is shown as follow:
+Fig. 1 shows the whole system architecture, the phase shift is realized by multiply a rand varible $\phi$ obey uniform distribution to signal $s(i)$. The channel formula is shown as follow:
 \begin{equation}
 r(i)=s(i)e^{j\phi}+n(i)
 \end{equation}
 And theortical BER for DQPSK over phase shift AWGN channel can be shown as follow:
 \begin{equation}
-P_e \simeq \frac{1}{2}{\rm erfc}\left \{ 2\sqrt{\gamma}\sin(\frac{\pi}{8}) \right \}
+P_e \simeq \frac{1}{2}{\rm erfc}\left \{ 2\sqrt{\gamma}\sin\left(\frac{\pi}{8}\right) \right \}
 \end{equation}
 The erfc function is ${\rm erfc}=\frac{2}{\sqrt{\pi}}\int_{x}^{+\infty}e^{-\eta^2}d\eta$. And $\gamma$ in the equation repersents $E_b/N_0$ which is not in dB.\par
 Simulation condition can be shown in Table 2.
@@ -137,8 +136,8 @@ Simulation condition can be shown in Table 2.
 \end{table}
 
 \section{Simulation Result and Conclusion}
-We can see the simulation result from Fig.2 and Fig.3. Fig.2 shows the Bit Error Rate (BER) over AWGN channel without phase shift when the SNR starts from 0 dB to 11 dB, which we can see the non-coherent reception perform worse in BER under such situation. While in the Fig.3, BER of coherent reception over AWGN with phase shift is completely inacceptable, but the coherent reception have same performance as when there is no phase shift.
-In conclusion, non-coherent reception provide acceptable BER performance over phase shift AWGN channel, although the peformance is worse than coherent reception when there isn't any phase shift. On the other hand, non-coherent doesn't need knowlege of carrier, which is another advantage over coherent reception.
+Fig.2 shows the Bit Error Rate (BER) over AWGN channel without phase shift when the SNR starts from 0 dB to 11 dB, which we can see the non-coherent reception perform worse in BER under such situation\cite{babu2011evaluation}. While in the Fig.3, BER of coherent reception over AWGN with phase shift is completely inacceptable, but the coherent reception have same performance as when there is no phase shift.
+In conclusion, non-coherent reception provide acceptable BER performance over phase shift channel, although the peformance is worse than coherent reception when there isn't any phase shift. On the other hand, non-coherent doesn't need knowlege of carrier, which is another advantage over coherent reception.
 
 \begin{figure}[tbp]
 	\begin{center}
@@ -152,10 +151,13 @@ In conclusion, non-coherent reception provide acceptable BER performance over ph
 \begin{figure}[tbp]
 	\begin{center}
 		\vspace{0cm}
-		\includegraphics[width=\linewidth,clip]{fig/phase_shift.eps}
+		\includegraphics[width=\linewidth,clip]{fig/phase_shift.pdf}
 		\caption{Coherent Reception and Non-coherent Reception With Phase Shift}
 		\label{fig:sample}
 	\end{center}
 \end{figure}
+
+\bibliographystyle{IEEEtran}
+\bibliography{noncoherent.bib}
 
 \end{document} 

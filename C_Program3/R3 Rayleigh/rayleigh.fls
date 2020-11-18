@@ -272,5 +272,23 @@ INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/goth8.tfm
 INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx8.tfm
+INPUT fig/rayleigh_group.pdf
+INPUT extractbb -B cropbox -O fig/rayleigh_group.pdf
+INPUT fig/select_fading_illustrate.pdf
+INPUT extractbb -B cropbox -O fig/select_fading_illustrate.pdf
+INPUT fig/r_coherent.pdf
+INPUT extractbb -B cropbox -O fig/r_coherent.pdf
+INPUT fig/without_fd.pdf
+INPUT extractbb -B cropbox -O fig/without_fd.pdf
+INPUT fig/with_fd.pdf
+INPUT extractbb -B cropbox -O fig/with_fd.pdf
+INPUT fig/select.pdf
+INPUT extractbb -B cropbox -O fig/select.pdf
+INPUT rayleigh.bbl
+INPUT rayleigh.bbl
+INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth9.tfm
+INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/ptex-fonts/standard/goth9.tfm
+INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx9.tfm
+INPUT d:/Program Files/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri8.tfm
 OUTPUT rayleigh.dvi
 INPUT rayleigh.aux

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.sjis) (TeX Live 2020/W32TeX) (preloaded format=platex 2020.10.14)  17 NOV 2020 20:13
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.sjis) (TeX Live 2020/W32TeX) (preloaded format=platex 2020.10.14)  18 NOV 2020 22:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -667,10 +667,6 @@ File: tikzlibraryfit.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 braries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-
-Class ieicej Warning: Author's name "劉　ゆ辰" doesn't have a space.
-
-
 (d:/Program Files/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-dvips.d
 ef
 File: l3backend-dvips.def 2020-03-12 L3 backend support: dvips
@@ -681,7 +677,23 @@ File: l3backend-dvips.def 2020-03-12 L3 backend support: dvips
 \g__pdf_backend_annotation_int=\count294
 \g__pdf_backend_link_int=\count295
 \g__pdf_backend_link_sf_int=\count296
-) (./rayleigh.aux)
+) (./rayleigh.aux
+
+LaTeX Warning: Label `fig:sample' multiply defined.
+
+
+LaTeX Warning: Label `fig:sample' multiply defined.
+
+
+LaTeX Warning: Label `fig:sample' multiply defined.
+
+
+LaTeX Warning: Label `fig:sample' multiply defined.
+
+
+LaTeX Warning: Label `fig:sample' multiply defined.
+
+)
 \openout1 = `rayleigh.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
@@ -702,12 +714,11 @@ LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
 LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
- (I search kanjifont definition file: . . )
-(I search font definition file: . . . . . . . )
+ (I search kanjifont definition file: . . ) (I search font definition file: .
+. . . . . . )
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53
 .
-
-(d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/t1lmr.fd
+ (d:/Program Files/texlive/2020/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 ABD: EveryShipout initializing macros
@@ -813,35 +824,62 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 61.
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <8> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 69.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 69.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <8> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 69.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 69.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 71.
+File: fig/rayleigh_group.pdf Graphic file (type pdf)
+<fig/rayleigh_group.pdf>
+File: fig/select_fading_illustrate.pdf Graphic file (type pdf)
+<fig/select_fading_illustrate.pdf>
 
-Overfull \hbox (5.78624pt too wide) in paragraph at lines 88--100
+Overfull \hbox (14.57553pt too wide) in paragraph at lines 114--128
  [] 
  []
 
-[1
+File: fig/r_coherent.pdf Graphic file (type pdf)
+<fig/r_coherent.pdf>
+File: fig/without_fd.pdf Graphic file (type pdf)
+<fig/without_fd.pdf>
+File: fig/with_fd.pdf Graphic file (type pdf)
+<fig/with_fd.pdf>
+File: fig/select.pdf Graphic file (type pdf)
+<fig/select.pdf>
+(./rayleigh.bbl
+LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <9> not available
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <9> not available
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <8> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <8> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 25.
+ [1
 
 
-
-] (./rayleigh.aux)
+]) [2] (./rayleigh.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 15871 strings out of 481140
- 333768 string characters out of 5915129
- 601433 words of memory out of 5000000
- 31572 multiletter control sequences out of 15000+600000
- 604026 words of font info for 103 fonts, out of 8000000 for 9000
+ 15923 strings out of 481140
+ 334655 string characters out of 5915129
+ 601497 words of memory out of 5000000
+ 31607 multiletter control sequences out of 15000+600000
+ 611749 words of font info for 107 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 60i,17n,71p,406b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,71p,577b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on rayleigh.dvi (1 page, 3732 bytes).
+Output written on rayleigh.dvi (2 pages, 7340 bytes).
