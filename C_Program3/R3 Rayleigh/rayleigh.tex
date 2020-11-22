@@ -78,11 +78,11 @@ The received signal $r(t)$ can be represented as follow:
 \begin{equation}
 r(t)=h(t,\tau)*s(t)+n(t)
 \end{equation}
-$h(t,\tau)$ in the model is impulse response of Rayleigh Fading Channel with $D$ paths, and $\tau$ is delay of each path, which is considered much smaller than one symbol time and can be ignored. Finally, the Rayleigh Fading Channel model can be written in the following form:
+$h(t,\tau)$ in (4) is impulse channel response with $D$ paths, and $\tau$ is delay of each path. If $\tau$ is much smaller than one symbol time, it can be ingnored. Finally, the Rayleigh Fading Channel model can be written in the following form:
 \begin{equation}
 r(t)=\sum_{d=0}^{D-1}h_{d}(t)s(t)+n(t)
 \end{equation}
-Rayleigh fading is also called flat fading because its frequency response keeps flat in the bandwidth of transmit signal.
+When there is no delayed component, the Rayleigh channel can be regarded as a flat fading.
 \begin{table}[H]
 	\begin{center}
 	\caption{ACRONYMS AND FULL MEANING}
@@ -120,7 +120,7 @@ Rayleigh fading is also called flat fading because its frequency response keeps 
 \end{figure}
 
 \subsection{Frequency Selective Fading Channel}
-Another important fading is frequency selective fading channel, which is also caused by overlapping of several delayed waves in different propagation paths. Compare to Rayleigh fading, the delay of each path in this fading exceeds one symbol time and will cause specific frequency attenuation in the bandwidth of transmission signal. The impulse response of frequency selective fading is shown in Fig. 1. If we suppose only two paths in channel, we can build channel model as follow:
+Another important fading is frequency selective fading channel, which is also caused by overlapping of several delayed waves in different propagation paths. Compare to flat fading, the delay of each path in this fading exceeds one symbol time and will cause specific frequency attenuation in the bandwidth of transmission signal. The impulse response of frequency selective fading is shown in Fig. 1. If we suppose only two paths in channel, we can build channel model as follow:
 \begin{equation}
 r(i)=h_0s(i)+\underbrace{h_1s(i-1)}_{\rm ISI}+n(i)
 \end{equation}
@@ -131,14 +131,14 @@ In this chapter we will introduce how to realize above two fading channel in C p
 \subsection{Design of Rayleigh Fading Channel Simulation}
 Rayleigh fading channel can be represented in below form:
 \begin{equation}
-h(t)=\sum_{n=0}^{N-1}A_n{\rm exp}[j(2\pi f_D{\rm cos}\theta_n+\phi_n)]
+h(t)=\sum_{n=0}^{N-1}A_n{\rm exp}[j(2\pi f_D{\rm cos}\theta_nt+\phi_n)]
 \end{equation}
 $An$ is amplitude of impulse response which obeys 0 mean Gaussian distribution. $f_D=\frac{v}{\lambda}=\frac{vf_c}{c}$ is Doppler frequency which affects the rate of channel change over time. $\phi_n$ is initial phase which obeys uniform distribution. $N$ is number of waves, and if $N$ is large enough, according to Central Limit Theorem, $h(t)$ becomes 2 dimensional Gaussian distribution\cite{hoeffding1948central}. The theoretical BER of Rayleigh fading channel is\cite{ber}:
 \begin{equation}
 P_e(x)=\frac{1}{2}\left(1-\sqrt{\frac{x}{x+1}}\right)
 \end{equation}
-$x$ is ber which is not in dB form.\par
-To achieve best BER performance, receiver need to estimate channel state information to counteract amplitude attenuation and phase shift of receiving signal. However, even if we suppose the estimated signal is perfect, Rayleigh channel will change over time which is shown in Figure. 2. Thus, if Doppler shift is existed, the BER of the receiving end cannot be close to the theoretical value according to (7).
+$x$ is SNR which is not in dB form.\par
+To achieve best BER performance, receiver need to estimate channel state information to counteract amplitude attenuation and phase shift of receiving signal. However, even if we suppose the estimated channel is perfect, Rayleigh channel will change over time which is shown in Figure. 2. Thus, with Doppler shift, the BER of the receiving end cannot be close to the theoretical value according to (7).
 \begin{figure}[tbp]
 	\begin{center}
 		\vspace{0cm}
@@ -210,7 +210,7 @@ Fig. 7 shows BER performance when Doppler shift is 0 Hz, 100 Hz and 1000 Hz in f
 	\begin{center}
 		\vspace{0cm}
 		\includegraphics[width=\linewidth,clip]{fig/with_fd.eps}
-		\caption{QPSK and Noncoherent Demodulation BER with Different Doppler Shift in Rayleigh Fading Channel}
+		\caption{DQPSK and Noncoherent Demodulation BER with Different Doppler Shift in Rayleigh Fading Channel}
 		\label{fig:sample}
 	\end{center}
 \end{figure}
@@ -219,7 +219,7 @@ Fig. 7 shows BER performance when Doppler shift is 0 Hz, 100 Hz and 1000 Hz in f
 	\begin{center}
 		\vspace{0cm}
 		\includegraphics[width=\linewidth,clip]{fig/select.eps}
-		\caption{QPSK and Noncoherent Demodulation BER with Different Doppler Shift in Selective Fading Channel}
+		\caption{DQPSK and Noncoherent Demodulation BER with Different Doppler Shift in Selective Fading Channel}
 		\label{fig:sample}
 	\end{center}
 \end{figure}
