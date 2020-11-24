@@ -20,7 +20,7 @@
 #define BITN				(SYMBOLN * 2)
 #define FILENAME			"./data/non-coherent.dat"
 #define SYMBOL				(4)
-#define Fd					(1000)
+#define Fd					(0)
 #define WAVES				(8)
 /* symbol time */
 #define SYMBOL_RATE			(42.0e3)
@@ -36,8 +36,8 @@
 #define RAYLEIGH			1
 #define SELECT				2
 
-#define COHERENT			OFF
-#define CHANNEL				SELECT
+#define COHERENT			ON
+#define CHANNEL				RAYLEIGH
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
 /*---------------------------------------------------------*/
