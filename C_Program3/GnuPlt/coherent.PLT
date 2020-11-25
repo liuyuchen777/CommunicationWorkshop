@@ -1,11 +1,12 @@
 set terminal postscript portrait enhanced "Helvetica" 12
 
-set output 'r_coherent.eps'
+set terminal png size 500,500
+set output 'r_coherent.png'
 
 set grid
 set key right bottom
 set key box
-set size 0.8,0.4
+# set size 0.8,0.4
 set xlabel "E_b/N_0 (dB)"
 set ylabel "Average BER"
 set logscale y

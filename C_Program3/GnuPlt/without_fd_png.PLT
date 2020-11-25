@@ -1,12 +1,12 @@
 set terminal postscript portrait enhanced "Helvetica" 12
 
-# set terminal png size 800,500
-set output 'without_fd.eps'
+set terminal png size 800,500
+set output 'without_fd.png'
 
 set grid
 set key right bottom
 set key box
-set size 0.8,0.4
+#set size 0.8,0.4
 set xlabel "E_b/N_0 (dB)"
 set ylabel "Average BER"
 set logscale y
