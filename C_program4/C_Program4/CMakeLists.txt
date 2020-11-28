@@ -21,5 +21,5 @@ target_link_libraries(OFDM PUBLIC
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
 target_include_directories(OFDM PUBLIC
-                           "${PROJECT_BINARY_DIR}"
-                           )
+                        "${PROJECT_BINARY_DIR}"
+                        )

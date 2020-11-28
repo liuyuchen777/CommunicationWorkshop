@@ -18,7 +18,7 @@ void transmitter(int *bit, Complex *signal)
 void bit_generator(int *bit){
 	int n;
 
-	for(n = 0; n < (GROUP * BITN); n++)
+	for(n = 0; n < BITN; n++)
 	{
 		bit[n] = rand() % 2;
 	}
@@ -32,7 +32,7 @@ void QPSK_modulator(int *bit, Complex *signal)
 		{ 3, 2}
 	};
 	
-	for(n=0; n < (GROUP * SYMBOLN); n++){
+	for(n=0; n < SYMBOLN; n++){
 		bit1 = bit[n * 2];
 		bit2 = bit[n * 2 + 1];
 		symbol = bin2sym[bit1][bit2];
@@ -48,7 +48,7 @@ void DQPSK_modulator(int *bit, Complex *signal)
 	int now_symbol = 0;
 	int i = 0;
 
-	for (i = 0; i < (SYMBOLN * GROUP); i++)
+	for (i = 0; i < SYMBOLN; i++)
 	{
 		if (bit[2 * i] == 0)
 		{
@@ -94,8 +94,8 @@ void OFDM_modulator(int *bit, Complex *signal)
 		temp.image = 0.0;
 		for (n = 0; n < N; n++)
 		{
-			temp.real += Z[n].real * cos(2 * PI * n * k / N) - Z[n].image * sin(2 * PI * n * k / N);
-			temp.image += Z[n].image * cos(2 * PI * n * k / N) + Z[n].real * sin(2 * PI * n * k / N);
+			temp.real += Z[n].real * cos(2 * PI * ((double)n / N) * k) - Z[n].image * sin(2 * PI * ((double)n / N) * k);
+			temp.image += Z[n].image * cos(2 * PI * ((double)n / N) * k) + Z[n].real * sin(2 * PI * ((double)n / N) * k);
 		}
 		signal[GI + k].real = temp.real / sqrt(N);
 		signal[GI + k].image = temp.image / sqrt(N);

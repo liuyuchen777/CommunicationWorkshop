@@ -2,7 +2,7 @@
 
 #define LARGE_NUM	(6553600.0)
 
-extern Complex h[PATH_NUMBER][(GROUP * SYMBOLN)];
+extern Complex h[PATH_NUMBER];
 
 extern const double sym2sgnl1[4][2];
 extern const double sym2sgnl2[4][2];
@@ -62,85 +62,19 @@ int MLE2(Complex *symbol)
 
 void coherent_demodulator(Complex *signal, int *bit)
 {
-	int i = 0, j = 0;
-	Complex temp = {0.0, 0.0};
-	double norm = 0.0;
-	/* channel estimation */
-	for (i = 0; i < GROUP; i++)
-	{
-		for (j = 0; j < SYMBOLN; j++)
-		{
-			norm = pow(h[0][j].real, 2.0) + pow(h[0][j].image, 2.0);
-			temp.real = (signal[i * SYMBOLN + j].real * h[0][j].real 
-							+ signal[i * SYMBOLN + j].image * h[0][j].image) / norm;
-			temp.image = (signal[i * SYMBOLN + j].image * h[0][j].real 
-							- signal[i * SYMBOLN + j].real * h[0][j].image) / norm;
-			signal[i * SYMBOLN + j].real = temp.real;
-			signal[i * SYMBOLN + j].image = temp.image;
-		}
-	}
-	/* caculate which point is nearest */
-	for (i = 0; i < (GROUP * SYMBOLN); i++) 
-	{
-		switch (MLE1(&(signal[i])))
-		{
-			case 0: bit[i * 2] = 0; bit[i * 2 + 1] = 0; break;
-			case 1: bit[i * 2] = 0; bit[i * 2 + 1] = 1; break;
-			case 2: bit[i * 2] = 1; bit[i * 2 + 1] = 1; break;
-			case 3: bit[i * 2] = 1; bit[i * 2 + 1] = 0; break;
-		}
-	}
+
 }
 
 void non_coherent_demodulator(Complex *signal, int *bit)
 {
-	/* need combine with previous symbol */
-	int i = 0, j = 0;
-	Complex previous_symbol;
-	int diff_symbol = 0;
-	Complex temp;
-	double norm = 0.0;
-	
-	previous_symbol.real = 1.0;
-	previous_symbol.image = 0.0;
-	/* channel estimation */
-	for (i = 0; i < GROUP; i++)
-	{
-		for (j = 0; j < SYMBOLN; j++)
-		{
-			norm = pow(h[0][j].real, 2.0) + pow(h[0][j].image, 2.0);
-			temp.real = (signal[i * SYMBOLN + j].real * h[0][j].real 
-							+ signal[i * SYMBOLN + j].image * h[0][j].image) / norm;
-			temp.image = (signal[i * SYMBOLN + j].image * h[0][j].real 
-							- signal[i * SYMBOLN + j].real * h[0][j].image) / norm;
-			signal[i * SYMBOLN + j].real = temp.real;
-			signal[i * SYMBOLN + j].image = temp.image;
-		}
-	}
 
-	for (i = 0; i < (GROUP * SYMBOLN); i++)
-	{
-		/* dufferential */
-		temp.real = signal[i].real * previous_symbol.real + signal[i].image * previous_symbol.image;
-		temp.image = signal[i].image * previous_symbol.real - signal[i].real * previous_symbol.image;
-		diff_symbol = MLE2(&(temp));
-		switch (diff_symbol)
-		{
-			case 0: bit[i * 2] = 0; bit[i * 2 + 1] = 0; break;
-			case 1: bit[i * 2] = 0; bit[i * 2 + 1] = 1; break;
-			case 2: bit[i * 2] = 1; bit[i * 2 + 1] = 1; break;
-			case 3: bit[i * 2] = 1; bit[i * 2 + 1] = 0; break;
-		}
-		previous_symbol.real = signal[i].real;
-		previous_symbol.image = signal[i].image;
-	}
 }
 
 void OFDM_demodulator(Complex *signal, int *bit)
 {
-	Complex r[SYMBOLN];
-	Complex R[SYMBOLN];
-	Complex H[SYMBOLN];
+	Complex r[SYMBOLN];		/* receiverd signal */
+	Complex R[SYMBOLN];		/* after DFT */
+	Complex H[SYMBOLN];		/* channel state information */
 	Complex temp = {0.0, 0.0};
 	int m = 0, i = 0, k = 0, d = 0;
 	double norm = 0.0;
@@ -157,21 +91,22 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		temp.image = 0.0;
 		for (k = 0; k < N; k++)
 		{
-			temp.real += r[k].real * cos(-2 * PI * m * k / N) - r[k].image * sin(-2 * PI * m * k / N);
-			temp.image += r[k].image * cos(-2 * PI * m * k / N) + r[k].real * sin(-2 * PI * m * k / N);
+			temp.real += r[k].real * cos(-2 * PI * ((double)m / N) * k) - r[k].image * sin(-2 * PI * ((double)m / N) * k);
+			temp.image += r[k].image * cos(-2 * PI * ((double)m / N) * k) + r[k].real * sin(-2 * PI * ((double)m / N) * k);
 		}
 		R[m].real = temp.real / sqrt(SYMBOLN);
 		R[m].image = temp.image / sqrt(SYMBOLN);
 	}
+#if CHANNEL != AWGN
 	/* generate H */
-	for (m = 0; m < SYMBOLN; m++)
+	for (m = 0; m < N; m++)
 	{
 		temp.real = 0.0;
 		temp.image = 0.0;
 		for (d = 0; d < PATH_NUMBER; d++)
 		{
-			temp.real += h[d][0].real * cos(-2 * PI * m * d / N) - h[d][0].image * sin(-2 * PI * m * d / N);
-			temp.image += h[d][0].image * cos(-2 * PI * m * d / N) + h[d][0].real * sin(-2 * PI * m * d / N);
+			temp.real += h[d].real * cos(-2 * PI * m * d / N) - h[d].image * sin(-2 * PI * m * d / N);
+			temp.image += h[d].image * cos(-2 * PI * m * d / N) + h[d].real * sin(-2 * PI * m * d / N);
 		}
 		H[m].real = temp.real;
 		H[m].image = temp.image;
@@ -190,6 +125,7 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		R[m].real = temp.real / norm;
 		R[m].image = temp.image / norm;
 	}
+#endif
 	/* symbol desision */
 	for (m = 0; m < SYMBOLN; m++) 
 	{

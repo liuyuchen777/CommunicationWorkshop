@@ -1,6 +1,4 @@
-/*
- * code for non-coherent demodulation 
- */
+
 #ifndef __CONST_H_
 #define __CONST_H_
 
@@ -33,7 +31,6 @@
 #define N					(64)					/* number of subcarrier */
 /* loop time */
 #define LOOPN				(10000)					/* total loop time */
-#define GROUP				(1)						/* estimate group */
 #define DELAY_TIME			(0)
 /* channel type */
 #define AWGN				0
@@ -45,7 +42,7 @@
 #define OFDM				2
 /* setting */
 #define RECEIVER			OFDM					/* choose receiver type */
-#define CHANNEL				RAYLEIGH					/* choose channel type */
+#define CHANNEL				AWGN					/* choose channel type */
 #define PATH_NUMBER			1						/* only 1 and 2 */
 #define DELAY				1
 /*---------------------------------------------------------*/

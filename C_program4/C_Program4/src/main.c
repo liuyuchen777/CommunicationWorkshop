@@ -21,10 +21,10 @@ int main(void)
 {
 	int loop, Eb_N0;
 	/* define transmission bit and signal */
-	int transmitted_bit[(GROUP * BITN)], 
-		received_bit[(GROUP * BITN)];
-	Complex transmitted_signal[(GROUP * SYMBOLN) + GI], 
-			received_signal[(GROUP * SYMBOLN) + GI];
+	int transmitted_bit[BITN], 
+		received_bit[BITN];
+	Complex transmitted_signal[SYMBOLN + GI], 
+			received_signal[SYMBOLN + GI];
 	FILE *fp = NULL;
 	double CNR = 0.0;
 
@@ -38,10 +38,10 @@ int main(void)
 	else
 	{
 		/* run record parameter */
-		printf("[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, fd = %d, GROUP = %d, ", 
-					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, Fd, GROUP);
-		fprintf(fp, "[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, fd = %d, GROUP = %d, ", 
-					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, Fd, GROUP);
+		printf("[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, fd = %d, ", 
+					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, Fd);
+		fprintf(fp, "[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, fd = %d, ", 
+					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, Fd);
 #if RECEIVER == COHERENT
 			printf("QPSK / coherent reception, ");
 			fprintf(fp, "QPSK / coherent reception, ");
@@ -66,7 +66,7 @@ int main(void)
 	/* main loop */
 	for(Eb_N0 = SNR_START; Eb_N0 <= SNR_STOP; Eb_N0++)	/* SNR from 0-11 dB */
 	{
-		CNR = (double)Eb_N0 + 3.0;	/* QPSK provide 3dB improvement */
+		CNR = (double)Eb_N0;	/* QPSK provide 3dB improvement */
 		/* main loop */
 		for(loop = 0; loop < LOOPN; loop++) 
 		{
