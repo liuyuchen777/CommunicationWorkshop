@@ -1,6 +1,6 @@
-#include "../inc/const.h"
+#include "const.h"
 
-//#define TEMP
+/* #define TEMP */
 
 const double sym2sgnl1[4][2] = {
 		{ OneBySqrt2, OneBySqrt2},
@@ -20,6 +20,7 @@ const double sym2sgnl2[4][2] = {
 int main(void)
 {
 	int loop, Eb_N0;
+	/* define transmission bit and signal */
 	int transmitted_bit[(GROUP * BITN)], 
 		received_bit[(GROUP * BITN)];
 	Complex transmitted_signal[(GROUP * SYMBOLN) + GI], 
@@ -80,9 +81,12 @@ int main(void)
 	return 0;
 }
 #else
+/* do some quick test */
 int main()
 {
 	double x = 2.0;
-	printf("x ** 100 = %f", pow(x, 10000.0));
+	x += 1.0 - 2.0;
+
+	printf("x = %f\n", x);
 }
 #endif

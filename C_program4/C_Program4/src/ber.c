@@ -1,4 +1,4 @@
-#include "../inc/const.h"
+#include "const.h"
 
 void ber(int loop, int (*tbit), int (*rbit), FILE *fp, double CNR)
 {

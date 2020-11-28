@@ -1,4 +1,4 @@
-#include "../inc/const.h"
+#include "const.h"
 
 extern const double sym2sgnl1[4][2];
 extern const double sym2sgnl2[4][2];
@@ -82,13 +82,28 @@ void DQPSK_modulator(int *bit, Complex *signal)
 
 void OFDM_modulator(int *bit, Complex *signal)
 {
-	
-	/* S/P */
-
+	Complex Z[SYMBOLN];
+	Complex temp = {0.0, 0.0};
+	int n = 0, k = 0, i = 0;
+	/* bit -> QPSK symbol */
+	QPSK_modulator(bit, Z);
 	/* IDFT */
-
-	/* P/S */
-
+	for (k = 0; k < SYMBOLN; k++)
+	{
+		temp.real = 0.0;
+		temp.image = 0.0;
+		for (n = 0; n < N; n++)
+		{
+			temp.real += Z[n].real * cos(2 * PI * n * k / N) - Z[n].image * sin(2 * PI * n * k / N);
+			temp.image += Z[n].image * cos(2 * PI * n * k / N) + Z[n].real * sin(2 * PI * n * k / N);
+		}
+		signal[GI + k].real = temp.real / sqrt(N);
+		signal[GI + k].image = temp.image / sqrt(N);
+	}
 	/* insert GI */
-
+	for (i = 0; i < GI; i++)
+	{
+		signal[i].real = signal[N + i].real;
+		signal[i].image = signal[N + i].image;
+	}
 }

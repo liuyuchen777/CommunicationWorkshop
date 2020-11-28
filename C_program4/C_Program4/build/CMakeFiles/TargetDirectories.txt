@@ -1,0 +1,3 @@
+/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/rebuild_cache.dir
+/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/edit_cache.dir
+/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir
