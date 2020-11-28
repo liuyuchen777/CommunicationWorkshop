@@ -10,7 +10,9 @@ set(CMAKE_C_STANDARD 99)
 configure_file(inc/const.h.in const.h)
 
 # add the executable
-add_executable(OFDM src/main.c src/ber.c src/channel.c src/receiver.c src/transmitter.c)
+# m link math library
+aux_source_directory(./src C_SRC)
+add_executable(OFDM ${C_SRC})
 target_link_libraries(OFDM PUBLIC 
     ${EXTRA_LIBS}
     m
