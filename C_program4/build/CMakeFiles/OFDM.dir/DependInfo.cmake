@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/ber.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir/src/ber.c.o"
-  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/channel.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir/src/channel.c.o"
-  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/main.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir/src/main.c.o"
-  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/receiver.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir/src/receiver.c.o"
-  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/transmitter.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir/src/transmitter.c.o"
+  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/ber.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles/OFDM.dir/src/ber.c.o"
+  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/channel.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles/OFDM.dir/src/channel.c.o"
+  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/main.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles/OFDM.dir/src/main.c.o"
+  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/receiver.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles/OFDM.dir/src/receiver.c.o"
+  "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/transmitter.c" "/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles/OFDM.dir/src/transmitter.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

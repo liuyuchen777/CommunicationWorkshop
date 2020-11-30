@@ -14,8 +14,8 @@
 /*---------------------------------------------------------*/
 #define PI					3.141592654	/* acos(-1.0) */
 #define OneBySqrt2			0.707106781	/* 1.0/sqrt(2.0) */
-#define SNR_START			(3)
-#define SNR_STOP			(33)
+#define SNR_START			(0)
+#define SNR_STOP			(30)
 #define SYMBOLN				64
 #define BITN				(SYMBOLN * 2)
 #define FILENAME			"./data/non-coherent.dat"

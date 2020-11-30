@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4
+CMAKE_SOURCE_DIR = /mnt/d/Local_Lab/Commuication_Workshop/C_program4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build
+CMAKE_BINARY_DIR = /mnt/d/Local_Lab/Commuication_Workshop/C_program4/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OFDM.dir/depend.make
@@ -59,68 +59,68 @@ include CMakeFiles/OFDM.dir/flags.make
 
 CMakeFiles/OFDM.dir/src/ber.c.o: CMakeFiles/OFDM.dir/flags.make
 CMakeFiles/OFDM.dir/src/ber.c.o: ../src/ber.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/OFDM.dir/src/ber.c.o"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/ber.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/ber.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/OFDM.dir/src/ber.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/ber.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/ber.c
 
 CMakeFiles/OFDM.dir/src/ber.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/OFDM.dir/src/ber.c.i"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/ber.c > CMakeFiles/OFDM.dir/src/ber.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/ber.c > CMakeFiles/OFDM.dir/src/ber.c.i
 
 CMakeFiles/OFDM.dir/src/ber.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/OFDM.dir/src/ber.c.s"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/ber.c -o CMakeFiles/OFDM.dir/src/ber.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/ber.c -o CMakeFiles/OFDM.dir/src/ber.c.s
 
 CMakeFiles/OFDM.dir/src/channel.c.o: CMakeFiles/OFDM.dir/flags.make
 CMakeFiles/OFDM.dir/src/channel.c.o: ../src/channel.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OFDM.dir/src/channel.c.o"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/channel.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/channel.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OFDM.dir/src/channel.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/channel.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/channel.c
 
 CMakeFiles/OFDM.dir/src/channel.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/OFDM.dir/src/channel.c.i"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/channel.c > CMakeFiles/OFDM.dir/src/channel.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/channel.c > CMakeFiles/OFDM.dir/src/channel.c.i
 
 CMakeFiles/OFDM.dir/src/channel.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/OFDM.dir/src/channel.c.s"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/channel.c -o CMakeFiles/OFDM.dir/src/channel.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/channel.c -o CMakeFiles/OFDM.dir/src/channel.c.s
 
 CMakeFiles/OFDM.dir/src/main.c.o: CMakeFiles/OFDM.dir/flags.make
 CMakeFiles/OFDM.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/OFDM.dir/src/main.c.o"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/main.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/OFDM.dir/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/main.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/main.c
 
 CMakeFiles/OFDM.dir/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/OFDM.dir/src/main.c.i"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/main.c > CMakeFiles/OFDM.dir/src/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/main.c > CMakeFiles/OFDM.dir/src/main.c.i
 
 CMakeFiles/OFDM.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/OFDM.dir/src/main.c.s"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/main.c -o CMakeFiles/OFDM.dir/src/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/main.c -o CMakeFiles/OFDM.dir/src/main.c.s
 
 CMakeFiles/OFDM.dir/src/receiver.c.o: CMakeFiles/OFDM.dir/flags.make
 CMakeFiles/OFDM.dir/src/receiver.c.o: ../src/receiver.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/OFDM.dir/src/receiver.c.o"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/receiver.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/receiver.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/OFDM.dir/src/receiver.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/receiver.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/receiver.c
 
 CMakeFiles/OFDM.dir/src/receiver.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/OFDM.dir/src/receiver.c.i"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/receiver.c > CMakeFiles/OFDM.dir/src/receiver.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/receiver.c > CMakeFiles/OFDM.dir/src/receiver.c.i
 
 CMakeFiles/OFDM.dir/src/receiver.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/OFDM.dir/src/receiver.c.s"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/receiver.c -o CMakeFiles/OFDM.dir/src/receiver.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/receiver.c -o CMakeFiles/OFDM.dir/src/receiver.c.s
 
 CMakeFiles/OFDM.dir/src/transmitter.c.o: CMakeFiles/OFDM.dir/flags.make
 CMakeFiles/OFDM.dir/src/transmitter.c.o: ../src/transmitter.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/OFDM.dir/src/transmitter.c.o"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/transmitter.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/transmitter.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/OFDM.dir/src/transmitter.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OFDM.dir/src/transmitter.c.o   -c /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/transmitter.c
 
 CMakeFiles/OFDM.dir/src/transmitter.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/OFDM.dir/src/transmitter.c.i"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/transmitter.c > CMakeFiles/OFDM.dir/src/transmitter.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/transmitter.c > CMakeFiles/OFDM.dir/src/transmitter.c.i
 
 CMakeFiles/OFDM.dir/src/transmitter.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/OFDM.dir/src/transmitter.c.s"
-	/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/src/transmitter.c -o CMakeFiles/OFDM.dir/src/transmitter.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/transmitter.c -o CMakeFiles/OFDM.dir/src/transmitter.c.s
 
 # Object files for target OFDM
 OFDM_OBJECTS = \
@@ -140,7 +140,7 @@ OFDM: CMakeFiles/OFDM.dir/src/receiver.c.o
 OFDM: CMakeFiles/OFDM.dir/src/transmitter.c.o
 OFDM: CMakeFiles/OFDM.dir/build.make
 OFDM: CMakeFiles/OFDM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable OFDM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable OFDM"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OFDM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +153,6 @@ CMakeFiles/OFDM.dir/clean:
 .PHONY : CMakeFiles/OFDM.dir/clean
 
 CMakeFiles/OFDM.dir/depend:
-	cd /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4 /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4 /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build /mnt/d/Local_Lab/Commuication_Workshop/C_program4/C_Program4/build/CMakeFiles/OFDM.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/d/Local_Lab/Commuication_Workshop/C_program4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/d/Local_Lab/Commuication_Workshop/C_program4 /mnt/d/Local_Lab/Commuication_Workshop/C_program4 /mnt/d/Local_Lab/Commuication_Workshop/C_program4/build /mnt/d/Local_Lab/Commuication_Workshop/C_program4/build /mnt/d/Local_Lab/Commuication_Workshop/C_program4/build/CMakeFiles/OFDM.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/OFDM.dir/depend
 

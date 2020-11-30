@@ -33,7 +33,7 @@ double Guassian_Generator(double sigma2)
 void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 {
 	/* for calculate channel state information */
-	double An[WAVES];
+	Complex An[WAVES];
 	double Phin[WAVES];
 	double Thetan[WAVES];
 	double all_in_bracket = 0.0;
@@ -44,7 +44,8 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	/* calculate channel state information */
 	for (count1 = 0; count1 < WAVES; count1++)
 	{
-		An[count1] = Guassian_Generator(0.125);
+		An[count1].real = Guassian_Generator(0.125);
+		An[count1].image = Guassian_Generator(0.125);
 		Phin[count1] = ((double)rand()/RAND_MAX) * (2 * PI);
 		Thetan[count1] = ((double)rand()/RAND_MAX) * (2 * PI);
 	}
@@ -55,8 +56,8 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 		for (count2 = 0; count2 < WAVES; count2++)
 		{
 			all_in_bracket = 2 * PI * Fd * cos(Thetan[count2]) * count1 * Ts + Phin[count2];
-			temp.real = An[count2] * cos(all_in_bracket);
-			temp.image = An[count2] * sin(all_in_bracket);
+			temp.real = An[count2].real * cos(all_in_bracket) - An[count2].image * sin(all_in_bracket);
+			temp.image = An[count2].image * cos(all_in_bracket) + An[count2].real * sin(all_in_bracket);
 			channel_state_0[count1].real += temp.real;
 			channel_state_0[count1].image += temp.image;
 		}

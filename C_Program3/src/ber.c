@@ -19,8 +19,8 @@ void ber(int loop, int (*tbit), int (*rbit), FILE *fp, double CNR)
 	if(loop == LOOPN-1)
 	{
 		AverageBER /= (LOOPN * BITN * GROUP);
-		printf("Eb/N0 = %f, Average BER = %1.10f\n", (CNR - 6.0), AverageBER);
-		fprintf(fp, "%f\t%1.10f\n", (CNR - 6.0), AverageBER);
+		printf("Eb/N0 = %f, Average BER = %1.10f\n", (CNR - 3.0), AverageBER);
+		fprintf(fp, "%f\t%1.10f\n", (CNR - 3.0), AverageBER);
 		AverageBER = 0.0;
 	}
 }

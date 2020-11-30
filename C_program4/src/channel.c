@@ -32,7 +32,7 @@ double Gaussian_generator(double sigma2)
 void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 {
 	/* for calculate channel state information */
-	double An[WAVES];
+	Complex An[WAVES];
 	double Phin[WAVES];
 	double Thetan[WAVES];
 	int count = 0;
@@ -43,7 +43,8 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	/* calculate channel state information */
 	for (count = 0; count < WAVES; count++)
 	{
-		An[count] = Gaussian_generator(another_sigma2);
+		An[count].real = Gaussian_generator(another_sigma2);
+		An[count].image = Gaussian_generator(another_sigma2);
 		Phin[count] = ((double)rand()/RAND_MAX) * (2 * PI);
 		Thetan[count] = ((double)rand()/RAND_MAX) * (2 * PI);
 	}
@@ -51,8 +52,8 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	h[0].image = 0.0;
 	for (count = 0; count < WAVES; count++)
 	{
-		temp.real = An[count] * cos(Phin[count]);
-		temp.image = An[count] * sin(Phin[count]);
+		temp.real = An[count].real * cos(Phin[count]) - An[count].image * sin(Phin[count]);
+		temp.image = An[count].image * cos(Phin[count]) + An[count].real * sin(Phin[count]);
 		h[0].real += temp.real;
 		h[0].image += temp.image;
 	}
