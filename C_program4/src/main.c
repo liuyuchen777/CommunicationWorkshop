@@ -17,7 +17,7 @@ const double sym2sgnl2[4][2] = {
 };
 
 #ifndef TEMP
-int main(void)
+int main(int argc, char *argv[])
 {
 	int loop, Eb_N0;
 	/* define transmission bit and signal */
@@ -62,6 +62,11 @@ int main(void)
 			printf("selective fading channel.\n");
 			fprintf(fp, "selective fading channel.\n");
 #endif
+		if (argc >= 2)
+		{
+			printf("[Note] %s\n", argv[1]);
+			fprintf(fp, "[Note] %s\n", argv[1]);
+		}
 	}
 	/* main loop */
 	for(Eb_N0 = SNR_START; Eb_N0 <= SNR_STOP; Eb_N0++)	/* SNR from 0-11 dB */

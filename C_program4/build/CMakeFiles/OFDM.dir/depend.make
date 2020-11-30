@@ -7,6 +7,9 @@ CMakeFiles/OFDM.dir/src/ber.c.o: const.h
 CMakeFiles/OFDM.dir/src/channel.c.o: ../src/channel.c
 CMakeFiles/OFDM.dir/src/channel.c.o: const.h
 
+CMakeFiles/OFDM.dir/src/complex.c.o: ../src/complex.c
+CMakeFiles/OFDM.dir/src/complex.c.o: const.h
+
 CMakeFiles/OFDM.dir/src/main.c.o: ../src/main.c
 CMakeFiles/OFDM.dir/src/main.c.o: const.h
 

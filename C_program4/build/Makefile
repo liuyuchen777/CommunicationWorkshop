@@ -177,6 +177,33 @@ src/channel.c.s:
 	$(MAKE) -f CMakeFiles/OFDM.dir/build.make CMakeFiles/OFDM.dir/src/channel.c.s
 .PHONY : src/channel.c.s
 
+src/complex.o: src/complex.c.o
+
+.PHONY : src/complex.o
+
+# target to build an object file
+src/complex.c.o:
+	$(MAKE) -f CMakeFiles/OFDM.dir/build.make CMakeFiles/OFDM.dir/src/complex.c.o
+.PHONY : src/complex.c.o
+
+src/complex.i: src/complex.c.i
+
+.PHONY : src/complex.i
+
+# target to preprocess a source file
+src/complex.c.i:
+	$(MAKE) -f CMakeFiles/OFDM.dir/build.make CMakeFiles/OFDM.dir/src/complex.c.i
+.PHONY : src/complex.c.i
+
+src/complex.s: src/complex.c.s
+
+.PHONY : src/complex.s
+
+# target to generate assembly for a file
+src/complex.c.s:
+	$(MAKE) -f CMakeFiles/OFDM.dir/build.make CMakeFiles/OFDM.dir/src/complex.c.s
+.PHONY : src/complex.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -273,6 +300,9 @@ help:
 	@echo "... src/channel.o"
 	@echo "... src/channel.i"
 	@echo "... src/channel.s"
+	@echo "... src/complex.o"
+	@echo "... src/complex.i"
+	@echo "... src/complex.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -94,8 +94,7 @@ void OFDM_modulator(int *bit, Complex *signal)
 		temp.image = 0.0;
 		for (n = 0; n < N; n++)
 		{
-			temp.real += Z[n].real * cos(2 * PI * ((double)n / N) * k) - Z[n].image * sin(2 * PI * ((double)n / N) * k);
-			temp.image += Z[n].image * cos(2 * PI * ((double)n / N) * k) + Z[n].real * sin(2 * PI * ((double)n / N) * k);
+			temp = complex_add(temp, complex_multiply(Z[n], Exp(2 * PI * ((double)n / N) * k)));
 		}
 		signal[GI + k].real = temp.real / sqrt(N);
 		signal[GI + k].image = temp.image / sqrt(N);

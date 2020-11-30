@@ -17,16 +17,19 @@ void channel(Complex *input_signal, Complex *output_signal, double CNR)
 #endif
 }
 
-double Gaussian_generator(double sigma2)
+Complex Gaussian_generator(double sigma2)
 {
 	double r1, r2;	/* uniform distribution */
 	double gaussian = 0.0;
+	Complex temp = {0.0, 0.0};
 
 	r1 = (double)rand() / RAND_MAX;
 	r2 = (double)rand() / RAND_MAX;
 	gaussian = sqrt(-sigma2 * log(r1));
+	temp.real = gaussian * cos(2.0 * PI * r2);
+	temp.image = gaussian * sin(2.0 * PI * r2);
 
-	return gaussian * cos(2.0 * PI * r2);
+	return temp;
 }
 
 void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
@@ -43,8 +46,7 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	/* calculate channel state information */
 	for (count = 0; count < WAVES; count++)
 	{
-		An[count].real = Gaussian_generator(another_sigma2);
-		An[count].image = Gaussian_generator(another_sigma2);
+		An[count] = Gaussian_generator(another_sigma2);
 		Phin[count] = ((double)rand()/RAND_MAX) * (2 * PI);
 		Thetan[count] = ((double)rand()/RAND_MAX) * (2 * PI);
 	}
@@ -52,31 +54,24 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	h[0].image = 0.0;
 	for (count = 0; count < WAVES; count++)
 	{
-		temp.real = An[count].real * cos(Phin[count]) - An[count].image * sin(Phin[count]);
-		temp.image = An[count].image * cos(Phin[count]) + An[count].real * sin(Phin[count]);
-		h[0].real += temp.real;
-		h[0].image += temp.image;
+		h[0] = complex_add(h[0], complex_multiply(An[count], Exp(Phin[count])));
 	}
-/* multiply to channel */
+	/* multiply to channel */
 	for (count = 0; count < SYMBOLN; count++)
 	{
-		output_signal[count].real = h[0].real * input_signal[count].real 
-					- h[0].image * input_signal[count].image;
-		output_signal[count].image = h[0].real * input_signal[count].image 
-					+ h[0].image * input_signal[count].real;
+		output_signal[count] = complex_multiply(h[0], input_signal[count]);
 	}
 	/* add AWGN  */
 	for (count = 0; count < SYMBOLN; count++)
 	{
-		output_signal[count].real += Gaussian_generator(sigma2);
-		output_signal[count].image += Gaussian_generator(sigma2);
+		output_signal[count] = complex_add(output_signal[count], Gaussian_generator(sigma2));
 	}
 }
 
 void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 {
 	/* define val */
-	double An[WAVES];
+	Complex An[WAVES];
 	double Phin[WAVES];
 	double Thetan[WAVES];
 	int count1 = 0, count2 = 0;
@@ -96,36 +91,26 @@ void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 		h[count1].image = 0.0;
 		for (count2 = 0; count2 < WAVES; count2++)
 		{
-			temp.real = An[count2] * cos(Phin[count2]);
-			temp.image = An[count2] * sin(Phin[count2]);
-			h[count1].real += temp.real;
-			h[count1].image += temp.image;
+			h[count1] = complex_add(h[count1], complex_multiply(An[count2], Exp(Phin[count2])));
 		}
 	}
 	/* handle delay */
 	for (count1 = 0; count1 < DELAY; count1++)
 	{
-		output_signal[count1].real = h[0].real * input_signal[count1].real 
-					- h[0].image * input_signal[0].image;
-		output_signal[count1].image = h[0].real * input_signal[count1].image 
-					+ h[0].image * input_signal[count1].real;
+		output_signal[count1] = complex_multiply(h[0], input_signal[count1]);
 	}
 	/* multiply to channel */
 	for (count1 = DELAY; count1 < SYMBOLN; count1++)
 	{
 		for (count2 = 0; count2 < PATH_NUMBER; count2++)
 		{
-			output_signal[count1].real += h[count2].real * input_signal[count1].real 
-						- h[count2].image * input_signal[count1].image;
-			output_signal[count1].image = h[count2].real * input_signal[count1].image 
-						+ h[count2].image * input_signal[count1].real;
+			output_signal[count1] = complex_add(output_signal[count1], complex_multiply(h[count2], input_signal[count1]));
 		}
 	}
 	/* add gaussian noise*/
 	for (count1 = 0; count1 < SYMBOLN; count1++)
 	{
-		output_signal[count1].real += Gaussian_generator(sigma2);
-		output_signal[count1].image += Gaussian_generator(sigma2);
+		output_signal[count1] = complex_add(output_signal[count1], Gaussian_generator(sigma2));
 	}
 }
 
@@ -136,7 +121,6 @@ void awgn(Complex *input_signal, Complex *output_signal, double CNR)
 
 	for (i = 0; i < (SYMBOLN + GI); i++)
 	{
-		output_signal[i].real = input_signal[i].real + Gaussian_generator(sigma2);
-		output_signal[i].image = input_signal[i].image + Gaussian_generator(sigma2);
+		output_signal[i] = complex_add(input_signal[i], Gaussian_generator(sigma2));
 	}
 }

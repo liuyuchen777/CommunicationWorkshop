@@ -16,7 +16,7 @@
 #define PI					3.141592654				/* acos(-1.0) */
 #define OneBySqrt2			0.707106781				/* 1.0/sqrt(2.0) */
 #define SNR_START			(0)
-#define SNR_STOP			(11)
+#define SNR_STOP			(30)
 #define SYMBOLN				(64)
 #define BITN				(SYMBOLN * 2)
 #define FILENAME			"../data/OFDM.dat"
@@ -81,8 +81,13 @@ void non_coherent_demodulator(Complex *signal, int *bit);
 void OFDM_demodulator(Complex *signal, int *bit);
 /* support function */
 void ber(int loop, int *tbit, int *rbit, FILE *fp, double CNR);
-double Gaussian_generator(double sigma2);
+Complex Gaussian_generator(double sigma2);
 void bit_generator(int *bit);
+/* complex operate function */
+Complex complex_add(Complex c1, Complex c2);
+Complex complex_multiply(Complex c1, Complex c2);
+Complex conjugate(Complex c);
+Complex Exp(double input);
 /*---------------------------------------------------------*/
 
 #endif

@@ -91,8 +91,7 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		temp.image = 0.0;
 		for (k = 0; k < N; k++)
 		{
-			temp.real += r[k].real * cos(-2 * PI * ((double)m / N) * k) - r[k].image * sin(-2 * PI * ((double)m / N) * k);
-			temp.image += r[k].image * cos(-2 * PI * ((double)m / N) * k) + r[k].real * sin(-2 * PI * ((double)m / N) * k);
+			temp = complex_add(temp, complex_multiply(r[k], Exp(-2 * PI * ((double)m / N) * k)));
 		}
 		R[m].real = temp.real / sqrt(SYMBOLN);
 		R[m].image = temp.image / sqrt(SYMBOLN);
@@ -105,8 +104,7 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		temp.image = 0.0;
 		for (d = 0; d < PATH_NUMBER; d++)
 		{
-			temp.real += h[d].real * cos(-2 * PI * m * d / N) - h[d].image * sin(-2 * PI * m * d / N);
-			temp.image += h[d].image * cos(-2 * PI * m * d / N) + h[d].real * sin(-2 * PI * m * d / N);
+			temp = complex_add(temp, complex_multiply(h[d], Exp(-2 * PI * m * d / N)));
 		}
 		H[m].real = temp.real;
 		H[m].image = temp.image;
@@ -120,8 +118,7 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		norm = 0.0;
 		/* equalize */
 		norm = pow(H[m].real, 2.0) + pow(H[m].image, 2.0);
-		temp.real = R[m].real * H[m].real + R[m].image * R[m].image;
-		temp.image = R[m].image * H[m].real - R[m].real * H[m].image;
+		temp = complex_multiply(R[m], conjugate(H[m]));
 		R[m].real = temp.real / norm;
 		R[m].image = temp.image / norm;
 	}
