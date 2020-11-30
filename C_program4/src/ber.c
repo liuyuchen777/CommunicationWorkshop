@@ -5,7 +5,7 @@ void ber(int loop, int (*tbit), int (*rbit), FILE *fp, double CNR)
 	int n, error = 0;
 	static double error_count = 0.0;
 
-	for (n = 0; n <  SYMBOLN; n++)
+	for (n = 0; n <  BITN; n++)
 	{
 		if (tbit[n] != rbit[n])
 			error++;

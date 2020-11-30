@@ -37,10 +37,8 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	/* for calculate channel state information */
 	Complex An[WAVES];
 	double Phin[WAVES];
-	double Thetan[WAVES];
 	int count = 0;
 	double sigma2 = pow(10, (-CNR) / 10);
-	Complex temp = {0.0, 0.0};
 	double another_sigma2 = 0.125;
 
 	/* calculate channel state information */
@@ -48,7 +46,6 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	{
 		An[count] = Gaussian_generator(another_sigma2);
 		Phin[count] = ((double)rand()/RAND_MAX) * (2 * PI);
-		Thetan[count] = ((double)rand()/RAND_MAX) * (2 * PI);
 	}
 	h[0].real = 0.0;
 	h[0].image = 0.0;
@@ -66,6 +63,7 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	{
 		output_signal[count] = complex_add(output_signal[count], Gaussian_generator(sigma2));
 	}
+	// printf("channel.real = %f, channel.image = %f\n", h[0].real, h[0].image);
 }
 
 void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
@@ -73,10 +71,8 @@ void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 	/* define val */
 	Complex An[WAVES];
 	double Phin[WAVES];
-	double Thetan[WAVES];
 	int count1 = 0, count2 = 0;
 	double sigma2 = pow(10, (-CNR) / 10);
-	Complex temp = {0.0, 0.0};
 	double another_sigma2 = 0.0625;
 	/* generate h */
 	for (count1 = 0; count1 < PATH_NUMBER; count1++)
@@ -85,7 +81,6 @@ void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 		{
 			An[count2] = Gaussian_generator(another_sigma2);
 			Phin[count2] = ((double)rand()/RAND_MAX) * (2 * PI);
-			Thetan[count2] = ((double)rand()/RAND_MAX) * (2 * PI);
 		}
 		h[count1].real = 0.0;
 		h[count1].image = 0.0;

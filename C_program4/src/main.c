@@ -1,6 +1,6 @@
 #include "const.h"
 
-/* #define TEMP */
+//#define TEMP
 
 const double sym2sgnl1[4][2] = {
 		{ OneBySqrt2, OneBySqrt2},
@@ -89,9 +89,7 @@ int main(int argc, char *argv[])
 /* do some quick test */
 int main()
 {
-	double x = 2.0;
-	x += 1.0 - 2.0;
-
-	printf("x = %f\n", x);
+	printf("cos(0) = %f\n", cos(0));
+	printf("sin(0) = %f\n", sin(0));
 }
 #endif

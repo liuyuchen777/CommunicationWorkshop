@@ -22,22 +22,22 @@ void receiver(Complex *signal, int *bit)
 
 int MLE1(Complex *symbol)
 {
-	int decision = 0;
-	int i = 0;
-	double current = 0.0;
-	double minimun = LARGE_NUM;
-	/* Maximun Likelihood Estimator */
-	for (i = 0; i < SYMBOL; i++)
+	if (symbol->real >= 0 && symbol->image >= 0)
 	{
-		current = pow(symbol->real- sym2sgnl1[i][0], 2.0) + pow(symbol->image - sym2sgnl1[i][1], 2.0);
-		if (current <= minimun)
-		{
-			minimun = current;
-			decision = i;
-		}
+		return 0;
 	}
-
-	return decision;
+	else if (symbol->real < 0 && symbol->image >= 0)
+	{
+		return 1;
+	}
+	else if (symbol->real < 0 && symbol->image < 0)
+	{
+		return 2;
+	}
+	else
+	{
+		return 3;
+	}
 }
 
 int MLE2(Complex *symbol)
@@ -78,7 +78,7 @@ void OFDM_demodulator(Complex *signal, int *bit)
 	Complex temp = {0.0, 0.0};
 	int m = 0, i = 0, k = 0, d = 0;
 	double norm = 0.0;
-	/* wipe out GI */
+	/* remove GI */
 	for (i = 0; i < SYMBOLN; i++)
 	{
 		r[i].real = signal[GI + i].real;
@@ -91,14 +91,16 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		temp.image = 0.0;
 		for (k = 0; k < N; k++)
 		{
-			temp = complex_add(temp, complex_multiply(r[k], Exp(-2 * PI * ((double)m / N) * k)));
+			temp = complex_add(temp, complex_multiply(r[k], Exp(-2 * PI * m * k / SYMBOLN)));
 		}
-		R[m].real = temp.real / sqrt(SYMBOLN);
-		R[m].image = temp.image / sqrt(SYMBOLN);
+		R[m].real = 1 / sqrt(SYMBOLN) * temp.real;
+		R[m].image = 1 / sqrt(SYMBOLN) * temp.image;
 	}
+
 #if CHANNEL != AWGN
+	// printf("channel.real = %f, channel.image = %f\n", h[0].real, h[0].image);
 	/* generate H */
-	for (m = 0; m < N; m++)
+	for (m = 0; m < SYMBOLN; m++)
 	{
 		temp.real = 0.0;
 		temp.image = 0.0;
@@ -118,11 +120,12 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		norm = 0.0;
 		/* equalize */
 		norm = pow(H[m].real, 2.0) + pow(H[m].image, 2.0);
-		temp = complex_multiply(R[m], conjugate(H[m]));
+		temp = complex_multiply(conjugate(H[m]), R[m]);
 		R[m].real = temp.real / norm;
 		R[m].image = temp.image / norm;
 	}
 #endif
+
 	/* symbol desision */
 	for (m = 0; m < SYMBOLN; m++) 
 	{

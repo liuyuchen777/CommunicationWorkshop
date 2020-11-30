@@ -42,7 +42,7 @@
 #define OFDM				2
 /* setting */
 #define RECEIVER			OFDM					/* choose receiver type */
-#define CHANNEL				AWGN					/* choose channel type */
+#define CHANNEL				RAYLEIGH					/* choose channel type */
 #define PATH_NUMBER			1						/* only 1 and 2 */
 #define DELAY				1
 /*---------------------------------------------------------*/
