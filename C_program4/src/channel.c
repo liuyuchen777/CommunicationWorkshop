@@ -71,9 +71,8 @@ void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 	double Phin[WAVES];
 	int count1 = 0, count2 = 0;
 	double sigma2 = pow(10, (-CNR) / 10);
-	Complex temp = {0.0, 0.0};
 	/* generate h */
-	for (count1 = 0; count1 < PATH_NUMBER; count1++)
+	for (count1 = 0; count1 < 2; count1++)
 	{
 		for (count2 = 0; count2 < WAVES; count2++)
 		{

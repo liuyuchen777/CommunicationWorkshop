@@ -76,7 +76,7 @@ void OFDM_demodulator(Complex *signal, int *bit)
 	Complex R[SYMBOLN];		/* after DFT */
 	Complex H[SYMBOLN];		/* channel state information */
 	Complex temp = {0.0, 0.0};
-	int m = 0, i = 0, k = 0, d = 0;
+	int m = 0, i = 0, k = 0;
 	double norm = 0.0;
 	/* remove GI */
 	for (i = 0; i < SYMBOLN; i++)
@@ -104,10 +104,10 @@ void OFDM_demodulator(Complex *signal, int *bit)
 	{
 		temp.real = 0.0;
 		temp.image = 0.0;
-		for (d = 0; d < PATH_NUMBER; d++)
-		{
-			temp = complex_add(temp, complex_multiply(h[d], Exp(-2 * PI * m * d / N)));
-		}
+		/* like DFT */
+		temp = complex_add(temp, h[0]);
+		temp = complex_add(temp, complex_multiply(h[1], Exp(-2 * PI * m * DELAY / N)));
+		/* give value */
 		H[m].real = temp.real;
 		H[m].image = temp.image;
 	}

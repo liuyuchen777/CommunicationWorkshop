@@ -38,10 +38,10 @@ int main(int argc, char *argv[])
 	else
 	{
 		/* run record parameter */
-		printf("[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, ", 
-					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP);
-		fprintf(fp, "[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, ", 
-					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP);
+		printf("[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, delay = %d, ", 
+					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, DELAY);
+		fprintf(fp, "[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, delay = %d, ", 
+					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, DELAY);
 #if RECEIVER == COHERENT
 			printf("QPSK / coherent reception, ");
 			fprintf(fp, "QPSK / coherent reception, ");

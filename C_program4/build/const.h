@@ -16,17 +16,13 @@
 #define PI					3.141592654				/* acos(-1.0) */
 #define OneBySqrt2			0.707106781				/* 1.0/sqrt(2.0) */
 #define SNR_START			(0)
-#define SNR_STOP			(11)
+#define SNR_STOP			(30)
 #define SYMBOLN				(64)
 #define BITN				(SYMBOLN * 2)
 #define FILENAME			"../data/OFDM.dat"
 #define SYMBOL				(4)						/* number of symbol */
-#define Fd					(0)						/* doppler shift frequency */
 #define WAVES				(8)						/* number of Rayleigh waves */
 /* symbol time */
-#define SYMBOL_RATE			(42.0e3)				/* symbol rate */
-#define Ts					(1.0 / SYMBOL_RATE)		/* symbol time */
-#define ONE_PATH			(1.0 / WAVES)
 #define GI					(16)					/* guard interval length */
 #define N					(64)					/* number of subcarrier */
 /* loop time */
@@ -44,7 +40,7 @@
 #define RECEIVER			OFDM					/* choose receiver type */
 #define CHANNEL				SELECT					/* choose channel type */
 #define PATH_NUMBER			2						/* only 1 and 2 */
-#define DELAY				1
+#define DELAY				20
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
 /*---------------------------------------------------------*/
