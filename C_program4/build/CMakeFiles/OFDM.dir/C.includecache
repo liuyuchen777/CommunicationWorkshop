@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/receiver.c
+/mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/channel.c
 const.h
 /mnt/d/Local_Lab/Commuication_Workshop/C_program4/src/const.h
 

@@ -39,12 +39,10 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 	double Phin[WAVES];
 	int count = 0;
 	double sigma2 = pow(10, (-CNR) / 10);
-	double another_sigma2 = 0.125;
-
 	/* calculate channel state information */
 	for (count = 0; count < WAVES; count++)
 	{
-		An[count] = Gaussian_generator(another_sigma2);
+		An[count] = Gaussian_generator(0.125);
 		Phin[count] = ((double)rand()/RAND_MAX) * (2 * PI);
 	}
 	h[0].real = 0.0;
@@ -54,12 +52,12 @@ void Rayleigh(Complex *input_signal, Complex *output_signal, double CNR)
 		h[0] = complex_add(h[0], complex_multiply(An[count], Exp(Phin[count])));
 	}
 	/* multiply to channel */
-	for (count = 0; count < SYMBOLN; count++)
+	for (count = 0; count < (SYMBOLN + GI); count++)
 	{
 		output_signal[count] = complex_multiply(h[0], input_signal[count]);
 	}
 	/* add AWGN  */
-	for (count = 0; count < SYMBOLN; count++)
+	for (count = 0; count < (SYMBOLN + GI); count++)
 	{
 		output_signal[count] = complex_add(output_signal[count], Gaussian_generator(sigma2));
 	}
@@ -73,13 +71,13 @@ void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 	double Phin[WAVES];
 	int count1 = 0, count2 = 0;
 	double sigma2 = pow(10, (-CNR) / 10);
-	double another_sigma2 = 0.0625;
+	Complex temp = {0.0, 0.0};
 	/* generate h */
 	for (count1 = 0; count1 < PATH_NUMBER; count1++)
 	{
 		for (count2 = 0; count2 < WAVES; count2++)
 		{
-			An[count2] = Gaussian_generator(another_sigma2);
+			An[count2] = Gaussian_generator(0.0625);
 			Phin[count2] = ((double)rand()/RAND_MAX) * (2 * PI);
 		}
 		h[count1].real = 0.0;
@@ -94,16 +92,14 @@ void select_channel(Complex *input_signal, Complex *output_signal, double CNR)
 	{
 		output_signal[count1] = complex_multiply(h[0], input_signal[count1]);
 	}
-	/* multiply to channel */
-	for (count1 = DELAY; count1 < SYMBOLN; count1++)
+	/* multiply to channel */	
+	for (count1 = DELAY; count1 < (SYMBOLN + GI); count1++)
 	{
-		for (count2 = 0; count2 < PATH_NUMBER; count2++)
-		{
-			output_signal[count1] = complex_add(output_signal[count1], complex_multiply(h[count2], input_signal[count1]));
-		}
+		output_signal[count1] = complex_add(complex_multiply(h[0], input_signal[count1]),
+										complex_multiply(h[1], input_signal[count1 - DELAY]));
 	}
 	/* add gaussian noise*/
-	for (count1 = 0; count1 < SYMBOLN; count1++)
+	for (count1 = 0; count1 < (SYMBOLN + GI); count1++)
 	{
 		output_signal[count1] = complex_add(output_signal[count1], Gaussian_generator(sigma2));
 	}

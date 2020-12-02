@@ -22,22 +22,22 @@ void receiver(Complex *signal, int *bit)
 
 int MLE1(Complex *symbol)
 {
-	if (symbol->real >= 0 && symbol->image >= 0)
+	int decision = 0;
+	int i = 0;
+	double current = 0.0;
+	double minimun = LARGE_NUM;
+	/* Maximun Likelihood Estimator */
+	for (i = 0; i < SYMBOL; i++)
 	{
-		return 0;
+		current = pow(symbol->real- sym2sgnl1[i][0], 2.0) + pow(symbol->image - sym2sgnl1[i][1], 2.0);
+		if (current <= minimun)
+		{
+			minimun = current;
+			decision = i;
+		}
 	}
-	else if (symbol->real < 0 && symbol->image >= 0)
-	{
-		return 1;
-	}
-	else if (symbol->real < 0 && symbol->image < 0)
-	{
-		return 2;
-	}
-	else
-	{
-		return 3;
-	}
+
+	return decision;
 }
 
 int MLE2(Complex *symbol)
@@ -119,8 +119,8 @@ void OFDM_demodulator(Complex *signal, int *bit)
 		temp.image = 0.0;
 		norm = 0.0;
 		/* equalize */
-		norm = pow(H[m].real, 2.0) + pow(H[m].image, 2.0);
-		temp = complex_multiply(conjugate(H[m]), R[m]);
+		norm = H[m].real * H[m].real + H[m].image * H[m].image;
+		temp = conjugate_multiply(R[m], H[m]);
 		R[m].real = temp.real / norm;
 		R[m].image = temp.image / norm;
 	}

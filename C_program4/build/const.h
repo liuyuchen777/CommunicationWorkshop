@@ -16,7 +16,7 @@
 #define PI					3.141592654				/* acos(-1.0) */
 #define OneBySqrt2			0.707106781				/* 1.0/sqrt(2.0) */
 #define SNR_START			(0)
-#define SNR_STOP			(30)
+#define SNR_STOP			(11)
 #define SYMBOLN				(64)
 #define BITN				(SYMBOLN * 2)
 #define FILENAME			"../data/OFDM.dat"
@@ -42,8 +42,8 @@
 #define OFDM				2
 /* setting */
 #define RECEIVER			OFDM					/* choose receiver type */
-#define CHANNEL				RAYLEIGH					/* choose channel type */
-#define PATH_NUMBER			1						/* only 1 and 2 */
+#define CHANNEL				SELECT					/* choose channel type */
+#define PATH_NUMBER			2						/* only 1 and 2 */
 #define DELAY				1
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
@@ -88,6 +88,8 @@ Complex complex_add(Complex c1, Complex c2);
 Complex complex_multiply(Complex c1, Complex c2);
 Complex conjugate(Complex c);
 Complex Exp(double input);
+Complex conjugate_multiply(Complex c1, Complex c2); /* c2 is conjugate one */
+void print_complex(Complex c);
 /*---------------------------------------------------------*/
 
 #endif

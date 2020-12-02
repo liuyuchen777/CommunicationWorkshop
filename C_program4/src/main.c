@@ -1,6 +1,6 @@
 #include "const.h"
 
-//#define TEMP
+// #define TEMP
 
 const double sym2sgnl1[4][2] = {
 		{ OneBySqrt2, OneBySqrt2},
@@ -38,10 +38,10 @@ int main(int argc, char *argv[])
 	else
 	{
 		/* run record parameter */
-		printf("[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, fd = %d, ", 
-					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, Fd);
-		fprintf(fp, "[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, fd = %d, ", 
-					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP, Fd);
+		printf("[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, ", 
+					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP);
+		fprintf(fp, "[%s] LOOPN = %d, total symbol number is %d, SNR from %d~%d dB, ", 
+					__TIME__, LOOPN, SYMBOLN, SNR_START, SNR_STOP);
 #if RECEIVER == COHERENT
 			printf("QPSK / coherent reception, ");
 			fprintf(fp, "QPSK / coherent reception, ");
@@ -89,7 +89,11 @@ int main(int argc, char *argv[])
 /* do some quick test */
 int main()
 {
-	printf("cos(0) = %f\n", cos(0));
-	printf("sin(0) = %f\n", sin(0));
+	Complex c1 = {1.0, 2.0};
+	Complex c2 = {0.0, 0.0};
+	c2 = c1;
+	Complex c3 = conjugate_multiply(c1, c2);
+	print_complex(c2);
+	print_complex(c3);
 }
 #endif
