@@ -3,9 +3,10 @@ import const
 total_error = 0
 
 def ber(loop, transmit_bit, receive_bit, f, CNR):
+    global total_error
     for i in range(const.BITN):
         if transmit_bit[i] != receive_bit[i]:
-            total_error += 1
+            total_error = total_error + 1
     
     if loop == (const.LOOPN - 1):
         Pe = total_error / (const.LOOPN * const.BITN)
