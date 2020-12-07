@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/d/Local_Lab/Commuication_Workshop/C_program4/CppVer/src/main.cpp
+const.h
+/mnt/d/Local_Lab/Commuication_Workshop/C_program4/CppVer/src/const.h
+
+const.h
+iostream
+-
+vector
+-
+cmath
+-
+ctime
+-
+string
+-
+fstream
+-
+cstdlib
+-
+
