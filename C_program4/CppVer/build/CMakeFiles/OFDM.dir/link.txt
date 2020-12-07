@@ -1,1 +1,0 @@
-/usr/bin/c++   -O0 -Wall -ggdb   CMakeFiles/OFDM.dir/src/main.cpp.o CMakeFiles/OFDM.dir/src/complex.cpp.o  -o OFDM  -lm 

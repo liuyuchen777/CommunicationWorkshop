@@ -1,6 +1,6 @@
 #include "const.h"
 
-void ber(int loop, int (*tbit), int (*rbit), FILE *fp, double CNR)
+void ber(u32 loop, vector<u32> &tbit, vector<u32> &rbit, fstream &fp, f32 CNR)
 {
 	int n, error = 0;
 	static double error_count = 0.0;
@@ -16,8 +16,8 @@ void ber(int loop, int (*tbit), int (*rbit), FILE *fp, double CNR)
 	if(loop == LOOPN-1)
 	{
 		error_count /= (LOOPN * BITN);
-		printf("Eb/N0 = %f, Average BER = %1.10f\n", (CNR - 3.0), error_count);
-		fprintf(fp, "%f\t%1.10f\n", (CNR - 3.0), error_count);
+		cout << "Eb/N0 = " << (CNR - 3.0) << ", Average BER = " << error_count << endl;
+		fp << (CNR - 3.0) << "\t" << error_count << endl;
 		error_count = 0.0;
 	}
 }

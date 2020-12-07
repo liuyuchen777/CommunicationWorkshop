@@ -1,15 +1,14 @@
 #include "const.h"
 
-#define TEMP
-
-const double sym2sgnl1[4][2] = {
+// #define TEMP // for temp test something
+const Complex sym2sgnl1[SYMBOL] = {
 		{ OneBySqrt2, OneBySqrt2},
 		{-OneBySqrt2, OneBySqrt2},
 		{-OneBySqrt2,-OneBySqrt2},
 		{ OneBySqrt2,-OneBySqrt2}
 };
 
-const double sym2sgnl2[4][2] = {
+const Complex sym2sgnl2[SYMBOL] = {
 		{1, 0},
 		{0, 1},
 		{-1, 0},
@@ -21,15 +20,15 @@ int main(int argc, char *argv[])
 {
 	u32 loop, Eb_N0;
 	/* define transmission bit and signal */
-	vector<u32> transmitted_bit[BITN];
-	vector<u32> received_bit[BITN];
-	vector<Complex> transmitted_signal[SYMBOLN + GI];
-	vector<Complex> received_signal[SYMBOLN + GI];
+	vector<u32> transmitted_bit(BITN);
+	vector<u32> received_bit(BITN);
+	vector<Complex> transmitted_signal(SYMBOLN + GI);
+	vector<Complex> received_signal(SYMBOLN + GI);
 	fstream fp;
 	f32 CNR = 0.0;
-
+	// rand seed
 	srand((unsigned)time(NULL));
-	/* writing log */
+	// writing log
 	fp.open(FILENAME, ios::app);
 	if (!fp.is_open())
 	{
@@ -51,7 +50,7 @@ int main(int argc, char *argv[])
 			fp << "[Note] " << argv[1] << endl;
 		}
 	}
-	/* main loop */
+	// main loop
 	for(Eb_N0 = SNR_START; Eb_N0 <= SNR_STOP; Eb_N0++)	/* SNR from 0-11 dB */
 	{
 		CNR = (double)Eb_N0 + 3.0;	/* QPSK provide 3dB improvement */
@@ -69,7 +68,6 @@ int main(int argc, char *argv[])
 	return 0;
 }
 #else
-/* do some quick test */
 int main()
 {
 	// test function of complex class
@@ -86,5 +84,8 @@ int main()
 	cout << c1 * c1.conj() << endl;
 	cout << c3 * 3 << endl;
 	cout << 3 * c3 << endl;
+
+	cout << 3.0 * c3 << endl;
+
 }
 #endif

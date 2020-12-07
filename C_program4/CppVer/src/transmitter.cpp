@@ -1,17 +1,8 @@
 #include "const.h"
 
-void transmitter(vector<u32> &bit, vector<Complex> &signal)
-{
-	bit_generator(bit);
-	if (RECEIVER == "COHERENT")
-		QPSK_modulator(bit, signal);
-	else if (RECEIVER == "NON_COHERENT")
-		DQPSK_modulator(bit, signal);
-	else if (RECEIVER == "OFDM")
-		OFDM_modulator(bit, signal);
-}
+void bit_generator(vector<u32> &bit);
 
-void bit_generator(vector<int> &bit)
+void bit_generator(vector<u32> &bit)
 {
 	int n;
 
@@ -19,6 +10,13 @@ void bit_generator(vector<int> &bit)
 	{
 		bit[n] = rand() % 2;
 	}
+}
+
+
+void transmitter(vector<u32> &bit, vector<Complex> &signal)
+{
+	bit_generator(bit);
+	OFDM_modulator(bit, signal);
 }
 
 void QPSK_modulator(vector<u32> &bit, vector<Complex> &signal)
@@ -33,8 +31,7 @@ void QPSK_modulator(vector<u32> &bit, vector<Complex> &signal)
 		bit1 = bit[n * 2];
 		bit2 = bit[n * 2 + 1];
 		symbol = bin2sym[bit1][bit2];
-		signal[n].real = sym2sgnl1[symbol][0];
-		signal[n].image = sym2sgnl1[symbol][1];
+		signal[n] = sym2sgnl1[symbol];
 	}
 }
 
@@ -71,15 +68,14 @@ void DQPSK_modulator(vector<u32> &bit, vector<Complex> &signal)
 			}
 		}
 		now_symbol = (now_symbol + previous_symbol) % 4;
-		signal[i].real() = sym2sgnl2[now_symbol][0];
-		signal[i].image() = sym2sgnl2[now_symbol][1];
+		signal[i] = sym2sgnl2[now_symbol];
 		previous_symbol = now_symbol;
 	}
 }
 
 void OFDM_modulator(vector<u32> &bit, vector<Complex> &signal)
 {
-	Complex Z[SYMBOLN];
+	vector<Complex> Z(SYMBOLN);
 	Complex temp = {0.0, 0.0};
 	int n = 0, k = 0, i = 0;
 	/* bit -> QPSK symbol */
@@ -87,19 +83,16 @@ void OFDM_modulator(vector<u32> &bit, vector<Complex> &signal)
 	/* IDFT */
 	for (k = 0; k < SYMBOLN; k++)
 	{
-		temp.real() = 0.0;
-		temp.image() = 0.0;
+		temp = {0.0, 0.0};
 		for (n = 0; n < SYMBOLN; n++)
 		{
-			temp = complex_add(temp, complex_multiply(Z[n], Exp(2 * PI * k * n / SYMBOLN)));
+			temp += Z[n] * Exp(2 * PI * k * n / SYMBOLN);
 		}
-		signal[GI + k].real = 1 / sqrt(SYMBOLN) * temp.real;
-		signal[GI + k].image = 1 / sqrt(SYMBOLN) * temp.image;
+		signal[GI + k] = temp * ((double)1 / sqrt(SYMBOLN));
 	}
 	/* insert GI */
 	for (i = 0; i < GI; i++)
 	{
-		signal[i].real = signal[N + i].real;
-		signal[i].image = signal[N + i].image;
+		signal[i] = signal[SYMBOLN + i];
 	}
 }

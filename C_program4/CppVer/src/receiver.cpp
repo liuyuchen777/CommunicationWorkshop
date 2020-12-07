@@ -2,20 +2,12 @@
 
 #define LARGE_NUM	(6553600.0)
 
-void receiver(Complex *signal, int *bit)
+void receiver(vector<Complex> &signal, vector<u32> &bit)
 {
-#if (RECEIVER == COHERENT)
-	/* coherent demodulation */
-	coherent_demodulator(signal, bit);
-#elif (RECEIVER == NON_COHERENT)
-	/* noncoherent demodulation */
-	non_coherent_demodulator(signal, bit);
-#elif (RECEIVER == OFDM)
 	OFDM_demodulator(signal, bit);
-#endif
 }
 
-int MLE1(Complex *symbol)
+int MLE1(Complex &symbol)
 {
 	int decision = 0;
 	int i = 0;
@@ -24,7 +16,7 @@ int MLE1(Complex *symbol)
 	/* Maximun Likelihood Estimator */
 	for (i = 0; i < SYMBOL; i++)
 	{
-		current = pow(symbol->real- sym2sgnl1[i][0], 2.0) + pow(symbol->image - sym2sgnl1[i][1], 2.0);
+		current = distance(symbol, sym2sgnl1[i]);
 		if (current <= minimun)
 		{
 			minimun = current;
@@ -35,7 +27,7 @@ int MLE1(Complex *symbol)
 	return decision;
 }
 
-int MLE2(Complex *symbol)
+int MLE2(Complex &symbol)
 {
 	int decision = 0;
 	int i = 0;
@@ -44,7 +36,7 @@ int MLE2(Complex *symbol)
 	/* Maximun Likelihood Estimator */
 	for (i = 0; i < SYMBOL; i++)
 	{
-		current = pow(symbol->real- sym2sgnl2[i][0], 2.0) + pow(symbol->image - sym2sgnl2[i][1], 2.0);
+		current = distance(symbol, sym2sgnl2[i]);
 		if (current <= minimun)
 		{
 			minimun = current;
@@ -55,17 +47,17 @@ int MLE2(Complex *symbol)
 	return decision;
 }
 
-void coherent_demodulator(Complex *signal, int *bit)
+void coherent_demodulator(vector<Complex> &signal, vector<u32> &bit)
 {
 
 }
 
-void non_coherent_demodulator(Complex *signal, int *bit)
+void non_coherent_demodulator(vector<Complex> &signal, vector<u32> &bit)
 {
 
 }
 
-void OFDM_demodulator(Complex *signal, int *bit)
+void OFDM_demodulator(vector<Complex> &signal, vector<u32> &bit)
 {
 	Complex r[SYMBOLN];		/* receiverd signal */
 	Complex R[SYMBOLN];		/* after DFT */
@@ -76,55 +68,47 @@ void OFDM_demodulator(Complex *signal, int *bit)
 	/* remove GI */
 	for (i = 0; i < SYMBOLN; i++)
 	{
-		r[i].real = signal[GI + i].real;
-		r[i].image = signal[GI + i].image;
+		r[i] = signal[GI + i];
 	}
 	/* DFT, get Rm */
 	for (m = 0; m < SYMBOLN; m++)
 	{
-		temp.real = 0.0;
-		temp.image = 0.0;
-		for (k = 0; k < N; k++)
+		temp.set(0.0, 0.0);
+		for (k = 0; k < SYMBOLN; k++)
 		{
-			temp = complex_add(temp, complex_multiply(r[k], Exp(-2 * PI * m * k / SYMBOLN)));
+			temp += r[k] * Exp(-2 * PI * m * k / SYMBOLN);
 		}
-		R[m].real = 1 / sqrt(SYMBOLN) * temp.real;
-		R[m].image = 1 / sqrt(SYMBOLN) * temp.image;
+		R[m] = ((double)1 / sqrt(SYMBOLN)) * temp;
 	}
 
-#if CHANNEL != AWGN
-	// printf("channel.real = %f, channel.image = %f\n", h[0].real, h[0].image);
-	/* generate H */
-	for (m = 0; m < SYMBOLN; m++)
+	if (strcmp(CHANNEL, "AWGN") != 0)
 	{
-		temp.real = 0.0;
-		temp.image = 0.0;
-		/* like DFT */
-		temp = complex_add(temp, h[0]);
-		temp = complex_add(temp, complex_multiply(h[1], Exp(-2 * PI * m * DELAY / N)));
-		/* give value */
-		H[m].real = temp.real;
-		H[m].image = temp.image;
+		/* generate H */
+		for (m = 0; m < SYMBOLN; m++)
+		{
+			temp.set(0.0, 0.0);
+			/* like DFT */
+			temp += h[0];
+			temp += h[1] * Exp(-2 * PI * m * DELAY / SYMBOLN);
+			/* give value */
+			H[m] = temp;
+		}
+		/* channel equalizer */
+		for (m = 0; m < SYMBOLN; m++)
+		{
+			/* initialize */
+			temp.set(0.0, 0.0);
+			norm = H[m].norm();
+			/* equalize */
+			temp = R[m] * H[m].conj();
+			R[m] = temp * (1 / norm);
+		}
 	}
-	/* channel equalizer */
-	for (m = 0; m < SYMBOLN; m++)
-	{
-		/* initialize */
-		temp.real = 0.0;
-		temp.image = 0.0;
-		norm = 0.0;
-		/* equalize */
-		norm = H[m].real * H[m].real + H[m].image * H[m].image;
-		temp = conjugate_multiply(R[m], H[m]);
-		R[m].real = temp.real / norm;
-		R[m].image = temp.image / norm;
-	}
-#endif
 
 	/* symbol desision */
 	for (m = 0; m < SYMBOLN; m++) 
 	{
-		switch (MLE1(&(R[m])))
+		switch (MLE1(R[m]))
 		{
 			case 0: bit[m * 2] = 0; bit[m * 2 + 1] = 0; break;
 			case 1: bit[m * 2] = 0; bit[m * 2 + 1] = 1; break;

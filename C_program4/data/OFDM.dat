@@ -139,3 +139,23 @@
 28.000000	0.0092312500
 29.000000	0.0096421875
 30.000000	0.0091828125
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+0	0.499782
+1	0.499874
+2	0.499662
+3	0.499991
+4	0.499299
+5	0.499829
+6	0.499886
+7	0.500181
+8	0.499995
+9	0.499771
+10	0.499904
+11	0.499825
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+[14:42:22] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.
+[15:09:12] LOOPN = 10000, total symbol number is 64, SNR from 0 ~ 11 dB, delay = 0, AWGN, OFDM.

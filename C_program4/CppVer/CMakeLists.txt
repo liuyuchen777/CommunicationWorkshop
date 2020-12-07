@@ -14,8 +14,8 @@ configure_file(inc/const.h.in const.h)
 
 # add the executable
 # m link math library
-# aux_source_directory(./src CXX_SRC)
-add_executable(OFDM ./src/main.cpp ./src/complex.cpp)
+aux_source_directory(./src CXX_SRC)
+add_executable(OFDM ${CXX_SRC})
 target_link_libraries(OFDM PUBLIC 
     ${EXTRA_LIBS}
     m
