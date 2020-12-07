@@ -27,3 +27,7 @@ cmake ..
 make
 ./<project> <note>
 ```
+
+## add C++ and Python version of code from Workshop 4
+
+C++ complete supported Complex class
