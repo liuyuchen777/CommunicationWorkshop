@@ -2,6 +2,10 @@
 
 void bit_generator(vector<u32> &bit);
 
+void convolution(vector<u32> &bit, vector<u32> &encode_bit);
+
+void interleaver(vector<u32> &bit);
+
 void bit_generator(vector<u32> &bit)
 {
 	int n;
@@ -12,11 +16,47 @@ void bit_generator(vector<u32> &bit)
 	}
 }
 
+void convolution(vector<u32> &bit, vector<u32> &encode_bit)
+{
+	u32 t_1 = 0, t_2 = 0;
+	int count = 0;
+	
+	for (count = 0; count < BITN; count++)
+	{
+		encode_bit[count * 2] = bit[count] ^ t_1 ^ t_2;
+		encode_bit[count * 2 + 1] = bit[count] ^ t_2;
+		// refresh t_1, t_2
+		t_2 = t_1;
+		t_1 = bit[count];
+	}
+}
+
+void interleaver(vector<u32> &bit)
+{
+	vector<u32> temp(BITN * 2);
+	int count1 = 0, count2 = 0, count3 = 0;
+	for (count1 = 0; count1 < 32; count1++)
+	{
+		for (count2 = 0; count2 < 8; count2++)
+		{
+			temp[count3] = bit[count1 + count2 * 32];
+			count3++;
+		}
+	}
+	// copy result to original array
+	for (count1 = 0; count1 < (BITN * 2); count1++)
+	{
+		bit[count1] = temp[count1];
+	}
+}
 
 void transmitter(vector<u32> &bit, vector<Complex> &signal)
 {
+	vector<int> encode_bit(BITN * 2);
 	bit_generator(bit);
-	OFDM_modulator(bit, signal);
+	convolution(bit, encode_bit);
+	interleaver(encode_bit);
+	OFDM_modulator(encode_bit, signal);
 }
 
 void QPSK_modulator(vector<u32> &bit, vector<Complex> &signal)

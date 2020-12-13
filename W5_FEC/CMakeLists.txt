@@ -4,7 +4,7 @@ SET(CMAKE_BUILD_TYPE "Debug")
 SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -ggdb")
 
 # set the project name and version
-project(OFDM VERSION 1.0)
+project(FEC VERSION 1.0)
 
 # specify C standard
 set(CMAKE_CXX_STANDARD 11)
@@ -15,14 +15,14 @@ configure_file(inc/const.h.in const.h)
 # add the executable
 # m link math library
 aux_source_directory(./src CXX_SRC)
-add_executable(OFDM ${CXX_SRC})
-target_link_libraries(OFDM PUBLIC 
+add_executable(FEC ${CXX_SRC})
+target_link_libraries(FEC PUBLIC 
     ${EXTRA_LIBS}
     m
     )
 
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
-target_include_directories(OFDM PUBLIC
+target_include_directories(FEC PUBLIC
                         "${PROJECT_BINARY_DIR}"
                         )
