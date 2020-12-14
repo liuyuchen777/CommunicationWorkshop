@@ -10,22 +10,31 @@ void bit_generator(vector<u32> &bit)
 {
 	int n;
 
-	for(n = 0; n < BITN; n++)
+	for(n = 0; n < TRANSMIT_BIT; n++)
 	{
 		bit[n] = rand() % 2;
+	}
+	for (n = TRANSMIT_BIT; n < BITN; n++)
+	{
+		// 清洗比特，使译码器状态归零
+		bit[n] = 0;
 	}
 }
 
 void convolution(vector<u32> &bit, vector<u32> &encode_bit)
 {
-	u32 t_1 = 0, t_2 = 0;
+	u32 t_1 = 0, t_2 = 0, t_3 = 0, t_4 = 0, t_5 = 0, t_6 = 0;
 	int count = 0;
 	
 	for (count = 0; count < BITN; count++)
 	{
-		encode_bit[count * 2] = bit[count] ^ t_1 ^ t_2;
-		encode_bit[count * 2 + 1] = bit[count] ^ t_2;
+		encode_bit[count * 2] = bit[count] ^ t_2 ^ t_3 ^ t_5 ^ t_6;
+		encode_bit[count * 2 + 1] = bit[count] ^ t_1 ^ t_2 ^ t_3 ^ t_6;
 		// refresh t_1, t_2
+		t_6 = t_5;
+		t_5 = t_4;
+		t_4 = t_3;
+		t_3 = t_2;
 		t_2 = t_1;
 		t_1 = bit[count];
 	}
