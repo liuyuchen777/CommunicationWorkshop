@@ -5,7 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/FEC.dir/src/main.cpp.o"
   "CMakeFiles/FEC.dir/src/receiver.cpp.o"
   "CMakeFiles/FEC.dir/src/transmitter.cpp.o"
-  "CMakeFiles/FEC.dir/src/viterbi.cpp.o"
   "FEC"
   "FEC.pdb"
 )

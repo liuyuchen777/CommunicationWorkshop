@@ -102,10 +102,11 @@ void select_channel(vector<Complex> &input_signal, vector<Complex> &output_signa
 void awgn(vector<Complex> &input_signal, vector<Complex> &output_signal, f32 CNR)
 {
 	int i = 0;
-	double sigma2 = pow(10, (-CNR) / 10);
+	double sigma2 = 2 * pow(10, (-CNR) / 10);
 
 	for (i = 0; i < (SYMBOLN + GI); i++)
 	{
 		output_signal[i] = input_signal[i] + Gaussian_generator(sigma2);
+		// output_signal[i] = input_signal[i];
 	}
 }

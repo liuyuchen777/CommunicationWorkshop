@@ -44,6 +44,7 @@ void interleaver(vector<u32> &bit)
 {
 	vector<u32> temp(BITN * 2);
 	int count1 = 0, count2 = 0, count3 = 0;
+	
 	for (count1 = 0; count1 < 32; count1++)
 	{
 		for (count2 = 0; count2 < 8; count2++)

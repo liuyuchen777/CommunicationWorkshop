@@ -285,33 +285,6 @@ src/transmitter.cpp.s:
 	$(MAKE) -f CMakeFiles/FEC.dir/build.make CMakeFiles/FEC.dir/src/transmitter.cpp.s
 .PHONY : src/transmitter.cpp.s
 
-src/viterbi.o: src/viterbi.cpp.o
-
-.PHONY : src/viterbi.o
-
-# target to build an object file
-src/viterbi.cpp.o:
-	$(MAKE) -f CMakeFiles/FEC.dir/build.make CMakeFiles/FEC.dir/src/viterbi.cpp.o
-.PHONY : src/viterbi.cpp.o
-
-src/viterbi.i: src/viterbi.cpp.i
-
-.PHONY : src/viterbi.i
-
-# target to preprocess a source file
-src/viterbi.cpp.i:
-	$(MAKE) -f CMakeFiles/FEC.dir/build.make CMakeFiles/FEC.dir/src/viterbi.cpp.i
-.PHONY : src/viterbi.cpp.i
-
-src/viterbi.s: src/viterbi.cpp.s
-
-.PHONY : src/viterbi.s
-
-# target to generate assembly for a file
-src/viterbi.cpp.s:
-	$(MAKE) -f CMakeFiles/FEC.dir/build.make CMakeFiles/FEC.dir/src/viterbi.cpp.s
-.PHONY : src/viterbi.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -339,9 +312,6 @@ help:
 	@echo "... src/transmitter.o"
 	@echo "... src/transmitter.i"
 	@echo "... src/transmitter.s"
-	@echo "... src/viterbi.o"
-	@echo "... src/viterbi.i"
-	@echo "... src/viterbi.s"
 .PHONY : help
 
 

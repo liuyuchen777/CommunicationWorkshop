@@ -4,7 +4,7 @@
 using namespace std;
 
 typedef unsigned int u32;
-#define TRANSMIT_BIT	(128)
+#define TRANSMIT_BIT	(122)
 #define CLEAN_BIT		(6)
 #define BITN			(TRANSMIT_BIT + CLEAN_BIT)
 
@@ -92,45 +92,35 @@ void deconvolution(vector<u32> &rec_bit, vector<u32> &bit)
 	{
 		if (b_pointer == 0)
 		{	// 初始化比较特殊只有两个
-			// 输入为0
-			output_calculator(0, 0, out_bit);
-			temp_bit[0] = rec_bit[b_pointer * 2];
-			temp_bit[1] = rec_bit[b_pointer * 2 + 1];
-			metric[0][b_pointer] = hamming_distance(out_bit, temp_bit);
-			path[0][b_pointer] = 0;
-			// 输入为1
-			output_calculator(0, 1, out_bit);
-			temp_bit[0] = rec_bit[b_pointer * 2];
-			temp_bit[1] = rec_bit[b_pointer * 2 + 1];
-			metric[1][b_pointer] = hamming_distance(out_bit, temp_bit);
-			path[1][b_pointer] = 0;
+			for (int z = 0; z < 2; z++)
+			{
+				output_calculator(0, z, out_bit);
+				temp_bit[0] = rec_bit[b_pointer * 2];
+				temp_bit[1] = rec_bit[b_pointer * 2 + 1];
+				metric[z][b_pointer] = hamming_distance(out_bit, temp_bit);
+				path[z][b_pointer] = 0;
+			}
 		}
 		else
 		{
 			for (s_pointer = 0; s_pointer < 64; s_pointer++)	// 每一个状态遍历一遍 state pointer
 			{
-				if (metric[s_pointer][b_pointer - 1] != -1)		// 如果之前这个状态已经有路径了
+				if (metric[s_pointer][b_pointer - 1] != 65536)		// 如果之前这个状态已经有路径了
 				{
 					// 0
-					output_calculator(s_pointer, 0, out_bit);
-					temp_bit[0] = rec_bit[b_pointer * 2];
-					temp_bit[1] = rec_bit[b_pointer * 2 + 1];
-					if ((hamming_distance(out_bit, temp_bit) + metric[s_pointer][b_pointer - 1]) 
-							< metric[((s_pointer << 1) & (0b111111)) + 0][b_pointer])
+					for (int z = 0; z < 2; z++)
 					{
-						metric[((s_pointer << 1) & (0b111111)) + 0][b_pointer] = hamming_distance(out_bit, temp_bit)
-																+ metric[s_pointer][b_pointer - 1];
-						// 记录转移过来的状态
-						path[((s_pointer << 1) & (0b111111)) + 0][b_pointer] = s_pointer;
-					}
-					// 1
-					output_calculator(s_pointer, 1, out_bit);
-					if ((hamming_distance(out_bit, temp_bit) + metric[s_pointer][b_pointer - 1]) 
-							< metric[((s_pointer << 1) & (0b111111)) + 1][b_pointer])
-					{
-						metric[((s_pointer << 1) & (0b111111)) + 1][b_pointer] = hamming_distance(out_bit, temp_bit)
-																+ metric[s_pointer][b_pointer - 1];
-						path[((s_pointer << 1) & (0b111111)) + 1][b_pointer] = s_pointer;
+						output_calculator(s_pointer, z, out_bit);
+						temp_bit[0] = rec_bit[b_pointer * 2];
+						temp_bit[1] = rec_bit[b_pointer * 2 + 1];
+						if ((hamming_distance(out_bit, temp_bit) + metric[s_pointer][b_pointer - 1]) 
+								< metric[((s_pointer << 1) & (0b111111)) + z][b_pointer])
+						{
+							metric[((s_pointer << 1) & (0b111111)) + z][b_pointer] = hamming_distance(out_bit, temp_bit)
+																	+ metric[s_pointer][b_pointer - 1];
+							// 记录转移过来的状态
+							path[((s_pointer << 1) & (0b111111)) + z][b_pointer] = s_pointer;
+						}
 					}
 				}
 			}
