@@ -30,7 +30,7 @@ typedef double f32;
 /*---------------------------------------------------------*/
 #define PI					3.141592654				// acos(-1.0)
 #define OneBySqrt2			0.707106781				// 1.0/sqrt(2.0)
-#define SNR_START			(17)
+#define SNR_START			(0)
 #define SNR_STOP			(30)
 // bit length
 #define SYMBOLN				(128)
@@ -40,9 +40,9 @@ typedef double f32;
 #define FILENAME			"../data/FEC.dat"
 #define SYMBOL				(4)						// number of symbol
 #define WAVES				(8)						// number of Rayleigh waves
-#define GI					(0)					// guard interval length
+#define GI					(8)					// guard interval length
 /* loop time */
-#define LOOPN				(100000)					// total loop time
+#define LOOPN				(1000)					// total loop time
 /* setting */
 #define RECEIVER			"OFDM"					// "OFDM" / "COHERENT" / "NON_COHERENT"
 #define CHANNEL				"RAYLEIGH"					// "AWGN" / "RAYLEIGH" / "SELECT"

@@ -36,7 +36,7 @@ void Rayleigh(vector<Complex> &input_signal, vector<Complex> &output_signal, f32
 	Complex An[WAVES];
 	double Phin[WAVES];
 	int count = 0;
-	double sigma2 = pow(10, (-CNR) / 10);
+	double sigma2 = 2 * pow(10, (-CNR) / 10);
 	/* calculate channel state information */
 	for (count = 0; count < WAVES; count++)
 	{
@@ -67,7 +67,7 @@ void select_channel(vector<Complex> &input_signal, vector<Complex> &output_signa
 	Complex An[WAVES];
 	double Phin[WAVES];
 	int count1 = 0, count2 = 0;
-	double sigma2 = pow(10, (-CNR) / 10);
+	double sigma2 = 2 * pow(10, (-CNR) / 10);
 	/* generate h */
 	for (count1 = 0; count1 < 2; count1++)
 	{

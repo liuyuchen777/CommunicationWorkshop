@@ -216,13 +216,15 @@ void OFDM_demodulator(vector<Complex> &signal, vector<u32> &bit)
 
 	if (strcmp(CHANNEL, "AWGN") != 0)
 	{
-		/* generate H */
 		for (m = 0; m < SYMBOLN; m++)
 		{
 			temp.set(0.0, 0.0);
 			/* like DFT */
 			temp += h[0];
-			temp += h[1] * Exp(-2 * PI * m * DELAY / SYMBOLN);
+			if (PATH_NUMBER == 2)
+			{
+				temp += h[1] * Exp(-2 * PI * m * DELAY / SYMBOLN);
+			}
 			/* give value */
 			H[m] = temp;
 		}
