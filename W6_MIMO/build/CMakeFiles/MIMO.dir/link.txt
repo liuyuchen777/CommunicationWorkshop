@@ -1,0 +1,1 @@
+/bin/g++-9   -O0 -Wall -ggdb   CMakeFiles/MIMO.dir/src/ber.cpp.o CMakeFiles/MIMO.dir/src/channel.cpp.o CMakeFiles/MIMO.dir/src/complex.cpp.o CMakeFiles/MIMO.dir/src/main.cpp.o CMakeFiles/MIMO.dir/src/receiver.cpp.o CMakeFiles/MIMO.dir/src/transmitter.cpp.o  -o MIMO  -lm 

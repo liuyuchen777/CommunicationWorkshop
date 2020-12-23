@@ -30,8 +30,8 @@ typedef double f32;
 /*---------------------------------------------------------*/
 #define PI					3.141592654				// acos(-1.0)
 #define OneBySqrt2			0.707106781				// 1.0/sqrt(2.0)
-#define SNR_START			(0)
-#define SNR_STOP			(30)
+#define SNR_START			(15)
+#define SNR_STOP			(20)
 // bit length
 #define SYMBOLN				(128)
 #define BITN				(128)
@@ -42,12 +42,12 @@ typedef double f32;
 #define WAVES				(8)						// number of Rayleigh waves
 #define GI					(8)					// guard interval length
 /* loop time */
-#define LOOPN				(1000)					// total loop time
+#define LOOPN				(10000)					// total loop time
 /* setting */
 #define RECEIVER			"OFDM"					// "OFDM" / "COHERENT" / "NON_COHERENT"
-#define CHANNEL				"RAYLEIGH"					// "AWGN" / "RAYLEIGH" / "SELECT"
-#define PATH_NUMBER			1						// only support 1 and 2
-#define DELAY				0
+#define CHANNEL				"SELECT"					// "AWGN" / "RAYLEIGH" / "SELECT"
+#define PATH_NUMBER			2						// only support 1 and 2
+#define DELAY				1
 
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */

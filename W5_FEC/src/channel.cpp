@@ -58,7 +58,6 @@ void Rayleigh(vector<Complex> &input_signal, vector<Complex> &output_signal, f32
 	{
 		output_signal[count] += Gaussian_generator(sigma2);
 	}
-	// printf("channel.real = %f, channel.image = %f\n", h[0].real, h[0].image);
 }
 
 void select_channel(vector<Complex> &input_signal, vector<Complex> &output_signal, f32 CNR)

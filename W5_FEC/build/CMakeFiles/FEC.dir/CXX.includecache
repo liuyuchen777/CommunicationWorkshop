@@ -6,7 +6,27 @@
 
 #IncludeRegexTransform: 
 
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/ber.cpp
+const.h
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/const.h
+
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/channel.cpp
+const.h
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/const.h
+
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/complex.cpp
+const.h
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/const.h
+
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/main.cpp
+const.h
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/const.h
+
 /mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/receiver.cpp
+const.h
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/const.h
+
+/mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/transmitter.cpp
 const.h
 /mnt/d/Local_Lab/Commuication_Workshop/W5_FEC/src/const.h
 
