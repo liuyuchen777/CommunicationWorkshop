@@ -45,7 +45,7 @@ void Rayleigh(vector<Complex> &input_signal1, vector<Complex> &input_signal2, ve
 	Complex H[2];
 	double 	Phin[WAVES];
 	int count = 0;
-	double sigma2 = 2 * pow(10, (-CNR) / 10);
+	double sigma2 = pow(10, (-CNR) / 10);
 	// the first path
 	for (count = 0; count < WAVES; count++)
 	{
@@ -69,12 +69,12 @@ void Rayleigh(vector<Complex> &input_signal1, vector<Complex> &input_signal2, ve
 		H[1] += An[count] * Exp(Phin[count]);
 	}
 	// multiply to channel
-	for (count = 0; count < (SYMBOLN + GI); count++)
+	for (count = 0; count < (SYMBOLN + 2); count++)
 	{
 		output_signal[count] = H[0] * input_signal1[count] + H[1] * input_signal2[count];
 	}
 	// add AWGN 
-	for (count = 0; count < (SYMBOLN + GI); count++)
+	for (count = 0; count < (SYMBOLN + 2); count++)
 	{
 		output_signal[count] += Gaussian_generator(sigma2);
 	}
@@ -87,7 +87,7 @@ void select_channel(vector<Complex> &input_signal1, vector<Complex> &input_signa
 	double 	Phin[WAVES];
 	Complex H[2][2];
 	int count1 = 0, count2 = 0, count3 = 0;
-	double sigma2 = 2 * pow(10, (-CNR) / 10);
+	double sigma2 = pow(10, (-CNR) / 10);
 	// generate H
 	for (count3 = 0; count3 < 2; count3++)
 	{
@@ -106,14 +106,14 @@ void select_channel(vector<Complex> &input_signal1, vector<Complex> &input_signa
 		}
 	}
 	// multiply to channel
-	for (count1 = 0; count1 < (SYMBOLN + GI); count1++)
+	for (count1 = 0; count1 < (SYMBOLN + 2); count1++)
 	{
-		output_signal[count1] = H[0][0] * input_signal1[count1] + H[0][1] * input_signal1[count1]
-								+ H[1][0] * input_signal2[count1] + H[1][1] * input_signal2[count1];
+		output_signal[count1] = (H[0][0] + H[0][1]) * input_signal1[count1]
+								+ (H[1][0] + H[1][1]) * input_signal2[count1];
 	}
 
 	// add gaussian noise
-	for (count1 = 0; count1 < (SYMBOLN + GI); count1++)
+	for (count1 = 0; count1 < (SYMBOLN + 2); count1++)
 	{
 		output_signal[count1] += Gaussian_generator(sigma2);
 	}
@@ -124,7 +124,7 @@ void awgn(vector<Complex> &input_signal1, vector<Complex> &input_signal2, vector
 	int i = 0;
 	double sigma2 = 2 * pow(10, (-CNR) / 10);
 
-	for (i = 0; i < (SYMBOLN + GI); i++)
+	for (i = 0; i < (SYMBOLN + 2); i++)
 	{
 		output_signal[i] = input_signal1[i] + input_signal2[i] + Gaussian_generator(sigma2);
 		// output_signal[i] = input_signal[i];

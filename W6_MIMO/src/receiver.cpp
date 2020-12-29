@@ -2,24 +2,14 @@
 
 #define LARGE_NUM	(6553600.0)
 
-void deinterleaver(vector<u32> &bit);
-
-void deconvolution(vector<u32> &rec_bit, vector<u32> &bit);
-
-void init_table(int table[][BITN]);
-
-void output_calculator(u32 state, u32 in_bit, vector<u32> &output_bit);
-
-int hamming_distance(vector<u32> &bit1, vector<u32> &bit2);
-
 void OFDM_demodulator(vector<Complex> &signal, vector<Complex> &demo_signal);
 
 void MLD(vector<Complex> &signal1, vector<Complex> &signal2, vector<u32> &bit1, vector<u32> &bit2);
 
 void receiver(vector<Complex> &signal1, vector<Complex> &signal2, vector<u32> &bit1, vector<u32> &bit2)
 {
-	vector<Complex> demodualte_signal1(SYMBOLN);
-	vector<Complex> demodualte_signal2(SYMBOLN);
+	vector<Complex> demodualte_signal1(SYMBOLN + 2);
+	vector<Complex> demodualte_signal2(SYMBOLN + 2);
 
 	OFDM_demodulator(signal1, demodualte_signal1);
 	OFDM_demodulator(signal2, demodualte_signal2);
@@ -43,11 +33,11 @@ void MLD(vector<Complex> &signal1, vector<Complex> &signal2,
 	};
 	// channel estimation
 	H[0][0] = signal1[0].divide(sym2sgnl[0]);
-	H[1][0] = signal1[1].divide(sym2sgnl[0]);
-	H[0][1] = signal2[0].divide(sym2sgnl[0]);
+	H[0][1] = signal1[1].divide(sym2sgnl[0]);
+	H[1][0] = signal2[0].divide(sym2sgnl[0]);
 	H[1][1] = signal2[1].divide(sym2sgnl[0]);
 	// detection
-	for (i = 2; i < SYMBOLN; i++)
+	for (i = 2; i < (SYMBOLN + 2); i++)
 	{
 		min = 65536.0;
 		for (bit_1_1 = 0; bit_1_1 < 2; bit_1_1++)
@@ -74,25 +64,24 @@ void MLD(vector<Complex> &signal1, vector<Complex> &signal2,
 				}
 			}
 		}
-		bit1[i * 2] = bit_1_1_record;
-		bit1[i * 2 + 1] = bit_1_2_record;
-		bit2[i * 2] = bit_2_1_record;
-		bit2[i * 2 + 1] = bit_2_2_record;
+		bit1[(i - 2) * 2] = bit_1_1_record;
+		bit1[(i - 2) * 2 + 1] = bit_1_2_record;
+		bit2[(i - 2) * 2] = bit_2_1_record;
+		bit2[(i - 2) * 2 + 1] = bit_2_2_record;
 	}
 }
 
 void OFDM_demodulator(vector<Complex> &signal, vector<Complex> &demo_signal)
 {
 	Complex r[SYMBOLN];		/* receiverd signal */
-	Complex H[SYMBOLN];		/* channel state information */
 	vector<u32> rec_bit(BITN * 2);
 	Complex temp = {0.0, 0.0};
 	int m = 0, i = 0, k = 0;
 	
-	// remove GI
+	// remove pilot
 	for (i = 0; i < SYMBOLN; i++)
 	{
-		r[i] = signal[GI + i];
+		r[i] = signal[2 + i];
 	}
 	/* DFT, get Rm */
 	for (m = 0; m < SYMBOLN; m++)
@@ -102,6 +91,9 @@ void OFDM_demodulator(vector<Complex> &signal, vector<Complex> &demo_signal)
 		{
 			temp += r[k] * Exp(-2 * PI * m * k / SYMBOLN);
 		}
-		demo_signal[m] = ((double)1 / sqrt(SYMBOLN)) * temp;
+		demo_signal[2 + m] = ((double)1 / sqrt(SYMBOLN)) * temp;
 	}
+
+	demo_signal[0] = signal[0];
+	demo_signal[1] = signal[1];
 }

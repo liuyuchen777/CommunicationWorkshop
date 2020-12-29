@@ -50,8 +50,8 @@ Complex Complex::operator-(const Complex c)
 {
     Complex temp(0.0, 0.0);
 
-    temp.set_real(temp.real() - c.real());
-    temp.set_image(temp.image() - c.image());
+    temp.set_real(this->m_real - c.real());
+    temp.set_image(this->m_image - c.image());
 
     return temp;
 }

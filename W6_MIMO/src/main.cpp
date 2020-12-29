@@ -34,10 +34,10 @@ int main(int argc, char *argv[])
 		vector<u32> received_bit_1(BITN);
 		vector<u32> transmitted_bit_2(BITN);
 		vector<u32> received_bit_2(BITN);
-		vector<Complex> transmitted_signal_1((SYMBOLN + GI));
-		vector<Complex> transmitted_signal_2((SYMBOLN + GI));
-		vector<Complex> received_signal_1((SYMBOLN + GI));
-		vector<Complex> received_signal_2((SYMBOLN + GI));
+		vector<Complex> transmitted_signal_1(SYMBOLN + 2);
+		vector<Complex> transmitted_signal_2(SYMBOLN + 2);
+		vector<Complex> received_signal_1(SYMBOLN + 2);
+		vector<Complex> received_signal_2(SYMBOLN + 2);
 		fstream fp;
 		f32 CNR = 0.0;
 		// rand seed

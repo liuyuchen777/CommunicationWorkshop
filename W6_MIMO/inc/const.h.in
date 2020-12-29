@@ -29,20 +29,19 @@ typedef double f32;
 /*---------------------------------------------------------*/
 #define PI					3.141592654				// acos(-1.0)
 #define OneBySqrt2			0.707106781				// 1.0/sqrt(2.0)
-#define SNR_START			(0)
-#define SNR_STOP			(10)
+#define SNR_START			(21)
+#define SNR_STOP			(23)
 // bit length
 #define SYMBOLN				(64)
 #define BITN				(128)
 #define FILENAME			"../data/MIMO.dat"
 #define SYMBOL				(4)						// number of symbol
 #define WAVES				(8)						// number of Rayleigh waves
-#define GI					(16)					// guard interval length
 /* loop time */
-#define LOOPN				(1000)					// total loop time
+#define LOOPN				(100000)					// total loop time
 /* setting */
 #define RECEIVER			"OFDM"					// "OFDM" / "COHERENT" / "NON_COHERENT"
-#define CHANNEL				"AWGN"					// "AWGN" / "RAYLEIGH" / "SELECT"
+#define CHANNEL				"SELECT"					// "AWGN" / "RAYLEIGH" / "SELECT"
 
 /*---------------------------------------------------------*/
 /* Debug_Function                                          */
@@ -101,9 +100,6 @@ class Complex{
 /*---------------------------------------------------------*/
 void transmitter(vector<u32> &bit1, vector<u32> &bit2, vector<Complex> &signal1, vector<Complex> &signal2);
 void receiver(vector<Complex> &signal1, vector<Complex> &signal2, vector<u32> &bit1, vector<u32> &bit2);
-/* modulator */
-void QPSK_modulator(vector<u32> &bit, vector<Complex> &signal);
-void OFDM_modulator(vector<u32> &bit, vector<Complex> &signal);
 /* channel */
 void channel(vector<Complex> &input_signal1, vector<Complex> &input_signal2, 
 				vector<Complex> &output_signal1, vector<Complex> &output_signal2, f32 CNR);
@@ -114,6 +110,6 @@ Complex Gaussian_generator(f32 sigma2);
 Complex Exp(f32 input);
 
 // global varible
-extern const Complex sym2sgnl[SYMBOL];
+extern Complex sym2sgnl[SYMBOL];
 
 #endif
